@@ -1,0 +1,36 @@
+.container-fluid {
+    height: 100px;
+    position: relative;
+    border-bottom: 2px solid grey;
+}
+
+@media only screen and (max-width: 1365px) {
+    .container-fluid {
+        height: auto;
+    }
+}
+
+.headerLogo {
+    height: 57px;
+    width: 60%;
+}
+
+.headerLogoleft {
+    height: 80px;
+    position: relative;
+}
+
+.topHeading {
+    font-weight: 700;
+    font-size: 24px;
+    
+}
+
+.bottomHeading {
+    font-weight: 500;
+    font-size: 20px;
+    color: #fd9903;
+}
+.container-fluid{
+    position:sticky;
+}

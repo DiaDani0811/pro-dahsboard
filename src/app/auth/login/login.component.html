@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="card">
+          <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+            <i class="fa-solid fa-user"></i>
+            <span class="heading">Login</span>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" formControlName="email">
+            </div>
+            <div class="form-field">
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" formControlName="password">
+            </div>
+            <div class="form-field">
+              <button type="button" class="submitButton" (click)="login()">Login</button>
+            </div>
+          </form>
+    </div>
+  </div>

@@ -1,0 +1,13 @@
+.button{
+    border-radius: 0;
+    background-color: #646464;
+    color: white;
+    border: 1px solid;
+}
+.card{
+    background: rgba( 255, 255, 255, 1 );
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.16);
+    backdrop-filter: blur( 20px );
+    -webkit-backdrop-filter: blur( 20px );
+    border-radius: 10px;
+    }

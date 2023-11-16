@@ -1,0 +1,10 @@
+.container{
+    height: calc(100% - 100px);
+    position: relative;
+}
+.btn-light{
+    border-radius: 0;
+    background-color: #646464;
+    color: white;
+    border: 1px solid;
+}
