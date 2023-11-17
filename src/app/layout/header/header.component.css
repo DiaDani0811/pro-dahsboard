@@ -1,7 +1,6 @@
 .container-fluid {
     height: 100px;
-    position: relative;
-    border-bottom: 2px solid grey;
+    border-bottom: 1px solid grey;
 }
 
 @media only screen and (max-width: 1365px) {

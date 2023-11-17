@@ -1,9 +1,11 @@
 <div class="container">
     <div class="card">
+      <div class="card-header">
+        <span class="heading">Login</span>
+      </div>
           <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
-            <i class="fa-solid fa-user"></i>
-            <span class="heading">Login</span>
-            <div class="form-field">
+            <!-- <i class="fa-solid fa-user"></i> -->
+            <div class="form-field mt-3" >
               <label for="email">Email</label>
               <input type="email" name="email" id="email" formControlName="email">
             </div>

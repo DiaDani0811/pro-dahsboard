@@ -15,11 +15,62 @@
     </div>
 
     <div class="col-8">
-        <div class="row">
-            <div class="card">
-                <app-bypatientsub></app-bypatientsub> <br>
+        <div>
+            <div class="card mb-4">
+                <div class="card style mb-3">
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="../assets/Images/header Logo.jpg" height="75" width="75">
+                        </div>
+                        <div class="col-5">
+                            <span style="font-weight: bold; font-size: x-large; color: grey;">Mr. George McCellan</span> <br>
+                            <span style="font-weight: bold;font-size: large; color: #f8a62b;">Total Knee Replacement</span>
+                        </div>
+                        <div class="col-5">
+                            <div class="row mb-2" >
+                                <span class="col-6" style="font-weight: bolder;">Surgeon Name  </span>
+                                <span class="col-6">: Robert Peterson</span>
+                            </div>
+                            <div class="row mb-2" >
+                                <span class="col-6" style="font-weight: bolder;">DOS  </span>
+                                <span class="col-6">: 08-21-2022</span>
+                            </div>
+                            <div class="row mb-2" >
+                                <span class="col-6" style="font-weight: bolder;">Body Part </span>
+                                <span class="col-6"> : Knee</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-3">
+                    <button type="button" class="button mb-2">KOOS</button>
+                    <div class="card linechartcard">
+                        <canvas id="byPatientLineChart" height="25" width="100"></canvas>
+                    </div>
 
-                <button type="button" class="button">KOOS</button>
+                    <div class="table">
+                        <table class="table table-striped table-hover ">
+                            <thead class="table-dark">
+                                <tr>
+                                    <td>Date Complete</td>
+                                    <td>Survey Name</td>
+                                    <td>Visit Type</td>
+                                    <td>Score</td>
+                                    <td>Report </td>
+                                </tr>
+                            </thead>
+                            <tbody class="table-hover">
+                                <tr *ngFor="let data of tableData">
+                                    <td>{{data.date}}</td>
+                                    <td>{{data.survey}}</td>
+                                    <td>{{data.visit}}</td>
+                                    <td>{{data.Score}}</td>
+                                    <td> report </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
