@@ -1,0 +1,9 @@
+img{
+    border: 2px solid grey;
+    border-radius:5px ;
+    margin: 20px;
+}
+.style{
+    box-shadow: 0 2px 9px -1px;
+    border-radius: 5px;
+}

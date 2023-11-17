@@ -4,12 +4,12 @@
 }
 .btn-light{
     border-radius: 0;
-    background-color:white ;
+    background-color: white;
     color: #646464;
     border: 1px solid;
 }
 .active1{
-      border-radius: 0;
+    border-radius: 0;
     background-color: #646464;
     color: white;
     border: 1px solid;

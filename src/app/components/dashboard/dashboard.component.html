@@ -1,15 +1,15 @@
 <app-header></app-header>
-<div class="container mt-2">
+<div class="container-fluid mt-2 ">
     <div class="row">
         <div class="col-6">
-            <button class="btn btn-light" routerLinkActive="active1" routerLink="drg"> Aggregate</button>
-            <button class="btn btn-light" routerLinkActive="active1" routerLink="payor">By Surgeon</button>
-            <button class="btn btn-light" routerLinkActive="active1" routerLink="procedure">By Patient</button>
+            <button class="btn btn-light" routerLink="aggregate"  routerLinkActive="active1"> Aggregate</button>
+            <button class="btn btn-light"  routerLink="bysurgeon" routerLinkActive="active1">By Surgeon</button>
+            <button class="btn btn-light"  routerLink="bypatient" routerLinkActive="active1">By Patient</button>
         </div>
         <div class="col-6">
-            <label for="dos" class="me-3"> DOS :</label>
+            <!-- <label for="dos" class="me-3"> DOS :</label>
             <input type="date" name="" id="dos">
-             <br>
+             <br> -->
 
             <label for="dropdown">Select Assesment</label>
             <select name="" id="dropdown" class="form-control w-50">
@@ -20,17 +20,9 @@
             </select>
         </div>
     </div>
-
     <div class="row">
-        <div class="col-10">
-            <router-outlet name="rec"></router-outlet>
-            <router-outlet name="long"></router-outlet>
-        </div>
-        <div class="col-2 text-center" style="margin-top:60px ;">
-            <img src="../../../assets/Images/header Logo.jpg" alt="" style="border-radius: 50%;height: 25%; border: 5px solid grey; margin-bottom: -50px;">
-            <img src="../../../assets/Images/header Logo.jpg" alt="" style="border-radius: 50%;height: 25%; border: 5px solid rgb(247, 150, 4); z-index: 10;position: relative;">
-            <img src="../../../assets/Images/header Logo.jpg" alt="" style="border-radius: 50%;height: 25%; border: 5px solid grey; margin-top: -50px;">
-        </div>
+       <router-outlet></router-outlet>
     </div>
+   
 </div>
 <app-footer></app-footer>

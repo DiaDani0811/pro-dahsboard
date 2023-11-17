@@ -1,27 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RecoveryComponent } from './recovery/recovery.component';
-import { LongtermComponent } from './longterm/longterm.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { HoosComponentRec } from './recovery/hoos/hoos.component';
-import { KoosComponentRec } from './recovery/koos/koos.component';
-import { PainComponentRec } from './recovery/pain/pain.component';
-import { HoosComponentLong } from './longterm/hoos/hoos.component';
-import { KoosComponentLong } from './longterm/koos/koos.component';
-import { PainComponentLong } from './longterm/pain/pain.component';
-
+import { DashboardComponent } from './dashboard.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
 
 @NgModule({
-  declarations: [
-    RecoveryComponent,
-    LongtermComponent,
-    HoosComponentRec,
-    KoosComponentRec,
-    PainComponentRec,
-    HoosComponentLong,
-    KoosComponentLong,
-    PainComponentLong
-  ],
+  declarations: [ DashboardComponent,HeaderComponent,FooterComponent ],
   imports: [
     CommonModule,
     DashboardRoutingModule

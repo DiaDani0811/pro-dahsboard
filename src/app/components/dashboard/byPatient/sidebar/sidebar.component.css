@@ -1,0 +1,10 @@
+.card{
+    background-color: rgb(131, 140, 139);
+}
+.row{
+    background-color: white;
+}
+.rowCss{
+    border: 5px solid rgba(247, 150, 4, 0.863); 
+
+}

@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "8f0c775b-8f9e-41e7-a02c-f4b0126a3728"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -89,7 +92,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "options": {
+"options": {
             "host": "192.168.5.63",
             "port": 9999
           },

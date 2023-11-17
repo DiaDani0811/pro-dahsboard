@@ -1,0 +1,16 @@
+.CH{
+    background-color: rgb(131, 140, 139)
+}
+input{
+        background: url("../../../../assets/Images/1608826_search_icon.png") no-repeat right;
+        background-size: 25px;
+        background-color: white;
+}
+
+.button{
+    border-radius: 0;
+    background-color: #646464;
+    color: white;
+    border: 1px solid;
+    width: 20%;
+}
