@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api_url : ''
+  api_url : 'http://192.168.5.182:8282/prodashboard'
 };
 
 /*

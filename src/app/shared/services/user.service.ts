@@ -6,12 +6,15 @@ import { Observable } from 'rxjs';
 import { distinctUntilChanged, map } from 'rxjs/operators';
 import { ApiService } from './api.service';
 import { JwtService } from './jwt.service';
-@Injectable()
+@Injectable({providedIn:"root"})
 export class UserService {
 
   users: any;
   constructor(private apiService: ApiService, private jwtService: JwtService, private http: HttpClient, private router: Router) { }
 
+
+  private testreplySub = new ReplaySubject<string>(5);
+  public  replySub= this.testreplySub.asObservable();
 
   private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
@@ -30,47 +33,46 @@ export class UserService {
       // this.getSession();
     }
   }
-
+ 
+  testreplySubFun(value)
+  {
+    this.testreplySub.next(value)
+  }
   //Login Credentials
-  // attemptAuth(credentials): Observable<User> {
-  //   return this.apiService.post('/api/v1/auth/getReportToken')
-  //     .pipe(map(
-  //       data => {
-  //         //console.log("auth", data)
-  //         if (data.token) {
-  //           this.jwtService.saveToken(data.token);
-  //           this.getSession();
-  //         }
-  //         return data;
-  //       }
+  attemptAuth(credentials) {
+    return this.apiService.post('/api/v1/auth/getReportToken')
+      .pipe(map(
+        data => {
+          //console.log("auth", data)
+          if (data.token) {
+            this.jwtService.saveToken(data.token);
+            this.getSession();
+          }
+          return data;
+        }
 
-  //     ));
-  // }
-  // error(error: any): import("rxjs").OperatorFunction<Object, any> {
-  //   throw new Error('Method not implemented.');
-  // }
+      ));
+  }
 
   // //Set Authentication
-  // getSession() {
-  //   let x = window.localStorage['jwtToken']
-  //     x = x.toString().replaceAll("\"", "");
-  //     this.apiService.getpost('/api/v1/auth/getsession', x)
-  //       .subscribe(
-  //         data => {
-  //           if (data.item.token) {
-  //             this.jwtService.saveToken(data.item.token);
-  //             this.isAuthenticatedSubject.next(true);
-  //             this.currentUserSubject.next(data);
-  //             if(window.localStorage['baseData'])
-  //             this.BaseConfigSubject.next(JSON.parse(window.localStorage['baseData']))
-  //           }
-  //         },
-  //         err => {
-  //           this.router.navigate(['/login']);
-  //           this.clearSession();
-  //         }
-  //       );
-  // }
+  getSession() {
+    let x = window.localStorage['jwtToken']
+      x = x.toString().replaceAll("\"","");
+      this.apiService.getpost('/api/v1/auth/getsession', x).subscribe(data => {
+            if (data.item.token) {
+              this.jwtService.saveToken(data.item.token);
+              this.isAuthenticatedSubject.next(true);
+              // this.currentUserSubject.next(data);
+              // if(window.localStorage['baseData'])
+              // this.BaseConfigSubject.next(JSON.parse(window.localStorage['baseData']))
+            }
+          },
+          err => {
+            this.router.navigate(['/login']);
+            this.clearSession();
+          }
+        );
+  }
   // getAllStaffs(obj) {
   //   return this.apiService.post(`/api/v1/reports/getAllStaffs`, obj);
   // }
