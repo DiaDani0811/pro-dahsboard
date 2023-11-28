@@ -13,7 +13,7 @@ input{
     color: white;
     border: 1px solid;
     width: 13%;
-    /* margin-bottom: 16px; */
+    margin: 10px 0 10px 0px;
 }
 .linechartcard{
     border-radius: 0;
@@ -27,8 +27,8 @@ img{
     border-radius:5px ;
     margin: 20px;
 }
-.style{
+/* .style{
     background: rgba(255, 255, 255, 1);
-    box-shadow: 0 1px 3px 0 rgba(31, 38, 135, 0.37);
+    /* box-shadow: 0 1px 3px 0 rgba(31, 38, 135, 0.37); 
     border-radius: 5px;
-}
+} */

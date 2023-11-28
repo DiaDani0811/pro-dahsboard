@@ -1,17 +1,17 @@
 <app-header></app-header>
-<div class="container-fluid mt-2 ">
+<div class="container-fluid" style="margin-top: 6rem!important;">
     <div class="row">
         <div class="col-6">
             <button class="btn btn-light" routerLink="aggregate"  routerLinkActive="active1"> Aggregate</button>
             <button class="btn btn-light"  routerLink="bysurgeon" routerLinkActive="active1">By Surgeon</button>
             <button class="btn btn-light"  routerLink="bypatient" routerLinkActive="active1">By Patient</button>
         </div>
-        <div class="col-6">
+        <div class="col-6 d-flex justify-content-end">
             <!-- <label for="dos" class="me-3"> DOS :</label>
             <input type="date" name="" id="dos">
              <br> -->
 
-            <label for="dropdown">Select Assesment</label>
+            <label for="dropdown" class="m-2">Select Assesment</label>
             <select name="" id="dropdown" class="form-control w-50">
                 <option value="" selected>HOOS,KOOS,PAIN</option>
                 <option value="HOOS">HOOS</option>
@@ -21,7 +21,9 @@
         </div>
     </div>
     <div class="row">
-       <router-outlet></router-outlet>
+        <div class="col-12">
+            <router-outlet></router-outlet>
+        </div>
     </div>
    
 </div>

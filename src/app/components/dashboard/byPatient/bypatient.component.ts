@@ -15,24 +15,50 @@ export class BypatientComponent implements OnInit {
   }
 
   lables: any = ["Pre Op", "Recovery", "Long Term Follow-up"];
-  dataChart : any = [25 , 40, 60, 80, 100] 
+  dataChart : any = [25 , 40, 60, 80, 100];
+ 
   renderChart(){
+    const data = {
+      datasets: [{
+        label: 'red Sales',
+        data: [18, 12, 6, 9, 12, 3, 9],
+        backgroundColor: [
+          'rgba(255, 26, 104, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 26, 104, 1)'
+        ],
+        borderWidth: 1
+      },
+      {
+        label: 'black Sales',
+        data: [28, 12, 16, 19, 20, 30, 52],
+        backgroundColor: [
+          'rgba(0, 0, 0, 0.2)'
+        ],
+        borderColor: [
+          'rgba(0, 0, 0, 1)'
+        ],
+        borderWidth: 1
+      }]
+    };
     new Chart("byPatientLineChart", {
       type: 'line',
-      data: {
-        labels: this.lables,
-        datasets: [{
-          data: this.dataChart,
-          backgroundColor : ["rgb(129,138,135)","rgb(255,181,0)"],          
-          tension : 0.5
-        }]
-      },
+      data,
       options: {
         scales: {
+          x:{
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            afterFit : ((ctx: any)=>{
+              console.log('ctx',ctx);
+            })
+          },
+          x2 : {
+            labels: ['', 'hii', 'hello'],
+            display : true
+          },
           y: {
-            stacked: true,
-            beginAtZero: true,
-            title : {display : true,text : 'AVG Score',font : { size : 15}}
+            beginAtZero: true
           }
         }
       }
