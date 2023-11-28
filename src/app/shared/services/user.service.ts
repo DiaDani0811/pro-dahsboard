@@ -62,6 +62,7 @@ export class UserService {
             if (data.item.token) {
               this.jwtService.saveToken(data.item.token);
               this.isAuthenticatedSubject.next(true);
+              this.router.navigate(['dashboard']);
               // this.currentUserSubject.next(data);
               // if(window.localStorage['baseData'])
               // this.BaseConfigSubject.next(JSON.parse(window.localStorage['baseData']))

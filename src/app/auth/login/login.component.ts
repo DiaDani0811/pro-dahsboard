@@ -24,28 +24,11 @@ export class LoginComponent implements OnInit {
       "email" : this.loginForm.value.email,
       "password" : this.loginForm.value.password
     }
-    console.log('paylaod',payload);
+    this.userService.isAuthenticated
     this.userService.attemptAuth(payload).subscribe(data => {
       if (data) {
-        this.router.navigate(["/dashboard"])
+        this.router.navigateByUrl("/dashboard")
       }
-    //     this.toast.success('Login Successfully', '', {
-    //       progressBar: true
-    //     })
-
-    //     this.router.navigate(['/dash'])
-
-    //   } else {
-    //     this.toast.error('Invalid Login Credentials', '', {
-    //       progressBar: true
-    //     })
-    //   }
-    // },
-    // err => {
-    //   this.toast.error('Invalid Login Credentials', '', {
-    //     progressBar: true
-    //   })
-    // }
     })
   }
   

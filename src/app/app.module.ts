@@ -7,6 +7,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './shared/services/user.service';
 import { ApiService } from './shared/services/api.service'; 
+import { AuthGuard } from './shared/auth-gaurd/auth-guard.service.guard';
+import { NoAuthGuard } from './shared/auth-gaurd/no-auth-guard.service.guard';
 
 
 @NgModule({
@@ -23,7 +25,7 @@ import { ApiService } from './shared/services/api.service';
     HttpClientModule
     
   ],
-  providers: [UserService,ApiService,],
+  providers: [UserService,ApiService,AuthGuard,NoAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
