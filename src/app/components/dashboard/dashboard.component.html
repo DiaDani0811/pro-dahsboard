@@ -12,12 +12,10 @@
              <br> -->
 
             <label for="dropdown" class="m-2">Select Assesment</label>
-            <select name="" id="dropdown" class="form-control w-50">
-                <option value="" selected>HOOS,KOOS,PAIN</option>
-                <option value="HOOS">HOOS</option>
-                <option value="KOOS">KOOS</option>
-                <option value="PAIN">PAIN</option>
-            </select>
+            <ng-multiselect-dropdown #multiSelect [placeholder]="'Select Assesment'" [data]="reportMasterList" [settings]="settings"
+                [disabled]="false" (onSelect)="onItemSelect($event)" (onDeSelect)="onDeSelect($event)" 
+                (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)">
+            </ng-multiselect-dropdown>
         </div>
     </div>
     <div class="row">
@@ -27,4 +25,61 @@
     </div>
    
 </div>
+
+<ng-template #categoryTemplate>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Select Mode to Enter</h4>
+        <!-- <button type="button" class="btn-close close pull-right" aria-label="Close" > -->
+        <!-- <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button> -->
+    </div>
+    <div class="modal-body">
+        <div  *ngIf="mode == 'A'">
+            <div class="row row-xs">
+                <div class="col-md-6 text-center mt-5 mb-3 cur-pointer" >
+                    <img src="./assets/images/presentation.png" alt="" (click)="mode = 'P'" class="w-70" />
+                    <h6>Presentation Mode</h6>
+                </div>
+                <div class="col-md-6 text-center mt-5 mb-3 cur-pointer">
+                    <img src="./assets/images/adminmode.svg" alt="" class="w-70" id="adminmode" (click)="launch('ADMIN')" />
+                    <h6>Admin Mode</h6>
+                </div>
+                <div class="col-sm lan-class text-center closebtn" style="display: none;">
+                    <button class="btn btn-sm btn-dark mt-3 mx-auto" >Close</button>
+                </div>
+            </div>
+        </div>
+         <div *ngIf="mode == 'P'">
+            <div class="row row-xs">
+                <div class="col-sm text-center mt-5 mb-3">
+                    <img src="./assets/images/presentation.png" alt="" class="w-70" />
+                    <h6>Presentation Mode</h6>
+                </div>
+                <div class="col-sm mt-5 mb-5 text-center">
+                    <div>
+                        <div style="width: 100%;text-align: left;">
+                            <label for="email" style="margin-bottom: 10px;">Select Hospital:</label>
+                            <select name="" id="">
+                                <option value="">sdfsf</option>
+                                <option value="">sdfsf</option>
+                                <option value="">sdfsf</option>
+                            </select>
+                            <!-- <dx-select-box valueExpr="rcId" [searchEnabled]="true" [(hint)]="clientName"
+                                displayExpr="clientName" placeholder="Select Hospital..." [dataSource]="sosDropdownList"
+                                [value]="sosSelectedItems" (onValueChanged)="hspchangeevent($event)"></dx-select-box> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm lan-class pull-right">
+                <span class="m-r-3">
+                    <button class="btn btn-sm btn-primary"  (click)="launch('PRESENTATION')">Launch</button>
+                </span>
+                <span>
+                    <button class="btn btn-sm btn-secondary" (click)="mode = 'A'" tabindex="0">Cancel</button>
+                </span>
+            </div>
+        </div>
+    </div>
+</ng-template>
 <app-footer></app-footer>

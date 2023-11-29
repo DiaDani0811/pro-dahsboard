@@ -13,11 +13,13 @@ export class UserService {
   constructor(private apiService: ApiService, private jwtService: JwtService, private http: HttpClient, private router: Router) { }
 
 
-  private testreplySub = new ReplaySubject<string>(5);
-  public  replySub= this.testreplySub.asObservable();
+  public currentUserSubject = new BehaviorSubject<any>([]);
+  public currentUser = this.currentUserSubject.asObservable().pipe(distinctUntilChanged());
 
   private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
+
+  
 
   clientMasterId: number = 0;
 
@@ -30,14 +32,13 @@ export class UserService {
 
   populate() {
     if (this.jwtService.getToken()) {
-      // this.getSession();
+      this.getSession();
+    }
+    else{
+      this.clearSession()
     }
   }
  
-  testreplySubFun(value)
-  {
-    this.testreplySub.next(value)
-  }
   //Login Credentials
   attemptAuth(credentials) {
     return this.apiService.post('/api/v1/auth/getReportToken')
@@ -58,30 +59,34 @@ export class UserService {
   getSession() {
     let x = window.localStorage['jwtToken']
       x = x.toString().replaceAll("\"","");
-      this.apiService.getpost('/api/v1/auth/getsession', x).subscribe(data => {
-            if (data.item.token) {
-              this.jwtService.saveToken(data.item.token);
-              this.isAuthenticatedSubject.next(true);
-              this.router.navigate(['dashboard']);
-              // this.currentUserSubject.next(data);
-              // if(window.localStorage['baseData'])
-              // this.BaseConfigSubject.next(JSON.parse(window.localStorage['baseData']))
-            }
-          },
-          err => {
-            this.router.navigate(['/login']);
-            this.clearSession();
-          }
-        );
+      this.apiService.getpost('/api/v1/auth/getsession', x).subscribe({
+        next:(data) => {
+          if (data.item.token) {
+                  this.jwtService.saveToken(data.item.token);
+                  this.isAuthenticatedSubject.next(true);
+                  this.router.navigate(['dashboard']);
+                  this.currentUserSubject.next(data);
+                  // if(window.localStorage['baseData'])
+                  // this.BaseConfigSubject.next(JSON.parse(window.localStorage['baseData']))
+        }
+      },
+      error:(err) => {
+        this.router.navigateByUrl("login")
+        this.clearSession();
+      },
+    });
+  }
+  getClientList() {
+    return this.apiService.post('/api/v1/reports/getClientList');
+  }
+  getReportMasterList(payload) {
+    return this.apiService.post('/api/v1/reports/getReportMasterList', payload);
   }
   // getAllStaffs(obj) {
   //   return this.apiService.post(`/api/v1/reports/getAllStaffs`, obj);
   // }
   // getAllSurgeon(obj) {
   //   return this.apiService.post(`/api/v1/reports/getAllSurgeons`, obj);
-  // }
-  // getClientList() {
-  //   return this.apiService.post('/api/v1/reports/getClientList');
   // }
   // getPayorList(obj) {
   //  return this.apiService.post('/api/v1/reports/getPayorType',obj);
@@ -91,9 +96,6 @@ export class UserService {
   // }
   // getReportCategoriesList(obj) {
   //   return this.apiService.post('/api/v1/reports/getReportCategories',obj);
-  // }
-  // getReportMasterList(masterCategoryId) {
-  //   return this.apiService.post('/api/v1/reports/getReportMasterList', masterCategoryId);
   // }
   // getpriodsList(data) {
   //   return this.apiService.post('/api/v1/reports/getPeriodRanges', data);

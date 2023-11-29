@@ -2,7 +2,7 @@
     background-color: rgb(131, 140, 139)
 }
 input{
-        background: url("../../../../assets/Images/1608826_search_icon.png") no-repeat right;
+        /* background: url("../../../../assets/Images/1608826_search_icon.png") no-repeat right; */
         background-size: 25px;
         background-color: white;
 }
