@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit {
   reportMasterList : masterList[];
   ngOnInit(): void {
     setTimeout(()=>{
+      if(!localStorage.getItem('mode'))
       this.openModal(this.categoryTemplateRef)
       this.getReportMasterListFromApi();
       this.getClientListFromApi();
@@ -82,9 +83,7 @@ export class DashboardComponent implements OnInit {
 
   launch(modeType){
     window.localStorage.setItem('mode', modeType)
-    if(localStorage.getItem('modeType')){
-      this.openModal(this.categoryTemplateRef)
-    }
+   this.modalRef?.hide();
   }
 
   clientData : any = []
