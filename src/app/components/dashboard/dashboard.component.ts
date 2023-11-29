@@ -18,7 +18,12 @@ interface masterList {
 
 export class DashboardComponent implements OnInit {
 
-  mode= 'A'
+  mode= 'A';
+  label: any = [];
+	Mlabel: any = [];
+	Ylabel: any = [];
+  fromRange : string = 'Q1'
+  toRange : string = 'Q12'
   constructor(private user : UserService,private modalService:BsModalService) { }
   reportMasterList : masterList[];
   ngOnInit(): void {
@@ -80,6 +85,16 @@ export class DashboardComponent implements OnInit {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, {backdrop : true, ignoreBackdropClick : false, animated : true, class:'alignment'});
   }
+
+  openRange(template: TemplateRef<any>) {
+		var config = {
+			backdrop: false,
+			ignoreBackdropClick: false,
+			class: 'modal-lg range-popup'
+		};
+		this.modalRef = this.modalService.show(template, config);
+
+	}
 
   launch(modeType){
     window.localStorage.setItem('mode', modeType)
