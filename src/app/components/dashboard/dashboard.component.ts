@@ -86,11 +86,14 @@ export class DashboardComponent implements OnInit {
    this.modalRef?.hide();
   }
 
-  clientData : any = []
+  hospitalList : any = []
   getClientListFromApi(){
     this.user.getClientList().subscribe({
       next:(value)=> {
-        this.clientData = value
+        this.hospitalList = value
     },})
+  }
+  hspchangeevent(e){
+    console.log('eee',e.value);
   }
 }

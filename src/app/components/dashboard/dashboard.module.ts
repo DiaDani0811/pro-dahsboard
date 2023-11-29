@@ -7,6 +7,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { DxSelectBoxModule } from 'devextreme-angular';
 @NgModule({
   declarations: [ DashboardComponent,HeaderComponent,FooterComponent ],
   imports: [
@@ -14,7 +15,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     DashboardRoutingModule,
     NgMultiSelectDropDownModule.forRoot(),
     MatDialogModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    DxSelectBoxModule
     
   ],
   schemas: [

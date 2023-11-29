@@ -59,14 +59,15 @@
                     <div>
                         <div style="width: 100%;text-align: left;">
                             <label for="email" style="margin-bottom: 10px;">Select Hospital:</label>
-                            <select name="" id="">
+                            <!-- <select name="" id="">
                                 <option value="">sdfsf</option>
                                 <option value="">sdfsf</option>
                                 <option value="">sdfsf</option>
-                            </select>
-                            <!-- <dx-select-box valueExpr="rcId" [searchEnabled]="true" [(hint)]="clientName"
-                                displayExpr="clientName" placeholder="Select Hospital..." [dataSource]="sosDropdownList"
-                                [value]="sosSelectedItems" (onValueChanged)="hspchangeevent($event)"></dx-select-box> -->
+                            </select> -->
+                            <dx-select-box valueExpr="rcId" [searchEnabled]="true"  displayExpr="clientName"
+                             placeholder="Select Hospital..." [dataSource]="hospitalList"
+                                 (onValueChanged)="hspchangeevent($event)"></dx-select-box>
+                                 <!-- [value]="sosSelectedItems" -->
                         </div>
                     </div>
                 </div>
