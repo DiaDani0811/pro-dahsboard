@@ -8,24 +8,25 @@
   </div>
   <div class="card-body CH ">
     <div class="mt-3" >
-      <div class="card" style="height: 300px;overflow-y: auto;">
+      <div  class="card" style="height: 300px;overflow-y: auto;" *ngIf="allPatientsList.length > 0">
         <ng-container  *ngFor="let data of allPatientsList | filter:searchText; let i = index">
           <div [ngClass]="activeIndex==i ? 'rowCss':''" style="margin: 6px 8px 11px 6px;cursor: pointer;" class="row mb-3" (click)="activeIndex=i">
             <div class="col-3">
-              <img [src]="data.img" height="50" width="50" class="m-2" style="border: 3px solid rgb(131, 140, 139);" alt="">
+              <img [src]="img_src" height="50" width="50" class="mt-3" style="border-radius: 5px;" alt="">
             </div>
             <div class="col-9">
-              <!-- {{data.patSalutation}} -->
-              <div class="row">{{data.patName}}</div>
-              <div class="row" style="display: block;">{{data.dos}}
+              <h4 class="mt-1">{{data.fullName}}</h4>
+              <p>DOS:{{data.dos}}
                 <span ><i class="fa-solid fa-circle-chevron-right float-right mr-2 mt-1" style="color: rgba(247, 150, 4, 0.863); font-size: larger;"></i></span>
-              </div>
-              <div class="row">{{data.procedureType}}</div>
+              </p>
+              <p>{{data.procedureType}}</p>
             </div>
           </div>
         </ng-container>
       </div>
+        <!-- <h5 class="text-light dataNotFound"  *ngIf="allPatientsList.length == 0 ">Data Not Found</h5> -->
     </div>
+    
     <div class="loader" *ngIf="loader">
       <li class="ball"></li>
       <li class="ball"></li>

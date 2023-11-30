@@ -49,14 +49,12 @@ export class DashboardComponent implements OnInit {
     document.documentElement.scrollTop = document.documentElement.scrollHeight
   }
   constructor(private user : UserService,private modalService:BsModalService) { }
-  reportMasterList : masterList[];
+  reportMasterList : masterList[]
 
   ngOnInit(): void {
     setTimeout(()=>{
-      if(!localStorage.getItem('mode'))
-      this.openModal(this.categoryTemplateRef)
+      // if(!localStorage.getItem('mode'))
       this.getReportMasterListFromApi();
-      this.getClientListFromApi();
     },1000)
   }
   getReportMasterListFromApi(){
@@ -104,12 +102,8 @@ export class DashboardComponent implements OnInit {
     console.log(items);
   }
 
-
-  @ViewChild('categoryTemplate') categoryTemplateRef:TemplateRef<any>
   modalRef?: BsModalRef;
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, {backdrop : true, ignoreBackdropClick : true, animated : true, keyboard : false, class:'alignment'});
-  }
+ 
 
   openRange(template: TemplateRef<any>) {
 		var config = {
@@ -121,15 +115,6 @@ export class DashboardComponent implements OnInit {
 
 	}
 
-  hospitalId:any;
-  hspchangeevent(e:any){
-    this.hospitalId =  e.value 
-  }
-  launch(modeType){
-    window.localStorage.setItem('mode', modeType);
-    modeType == "PRESENTATION" ? window.localStorage.setItem("hospitalId",this.hospitalId) :  window.localStorage.setItem("hospitalId","0");   
-    this.modalRef?.hide();
-  }
 
   hospitalList : any = []
   getClientListFromApi(){

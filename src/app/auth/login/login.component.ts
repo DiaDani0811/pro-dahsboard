@@ -27,7 +27,7 @@
       this.userService.isAuthenticated
       this.userService.attemptAuth(payload).subscribe(data => {
         if (data) {
-          this.router.navigateByUrl("/dashboard")
+          this.router.navigateByUrl("/switcMode")
         }
       })
     }

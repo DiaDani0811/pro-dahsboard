@@ -18,12 +18,12 @@ export class SidebarComponent implements OnInit {
   constructor(private userService:UserService) { }
   loader:boolean=false;
   searchText:any
+  img_src:string = "../../../../assets/images/profile.jpg";
   ngOnInit() {
     this.getAllPatients()
   }
 
   activeIndex:number=0
-
   cehck(data:any){
     console.log('check',data);
   }
@@ -34,8 +34,13 @@ export class SidebarComponent implements OnInit {
         "hospitalId": localStorage.getItem("hospitalId")
     }
     this.userService.getAllPatients(payload).subscribe((data)=>{
+    if(data){
       this.allPatientsList = data
+      this.allPatientsList.forEach(element => {
+        element.fullName = element.patSalutation+element.patName
+      });
       this.loader =false
+    }
     })
   }
 }

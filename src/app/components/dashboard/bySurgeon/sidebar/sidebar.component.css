@@ -1,5 +1,6 @@
 .card{
     background-color: rgb(131, 140, 139);
+    height: 430px;
 }
 .row{
     background-color: white;
@@ -36,5 +37,15 @@
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: white; 
-
+  }
+  .dataNotFound{
+    position: absolute;
+    top: 50%;
+    left: 40%;
+  }
+  .surgeonValues{
+    display: flex;
+    position: relative;
+    height: auto;
+    width: 100%;
   }

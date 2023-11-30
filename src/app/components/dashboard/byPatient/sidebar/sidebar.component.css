@@ -6,11 +6,12 @@
     height: 430px;
 }
 .row{
-    background-color: white;
+    background-color:  rgb(236, 236, 236);
 }
 .rowCss{
-    border: 5px solid rgba(247, 150, 4, 0.863); 
-
+    border: 4px solid rgba(247, 150, 4, 0.863); 
+    border-radius: 3px;
+    background-color: white;
 }
 .loader {
     position: absolute;
@@ -83,4 +84,9 @@
   }
   .surgeon{
     cursor: pointer;
+  }
+  .dataNotFound{
+    position: absolute;
+    top: 50%;
+    left: 40%;
   }

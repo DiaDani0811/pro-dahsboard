@@ -24,8 +24,6 @@ export class UserService {
   clientMasterId: number = 0;
 
   clearSession() {
-    this.jwtService.destroyToken();
-    this.jwtService.destroygetUserAccountId();
     localStorage.clear();
     this.isAuthenticatedSubject.next(false);
   }
@@ -44,7 +42,6 @@ export class UserService {
     return this.apiService.post('/api/v1/auth/getReportToken')
       .pipe(map(
         data => {
-          //console.log("auth", data)
           if (data.token) {
             this.jwtService.saveToken(data.token);
             this.getSession();
@@ -64,7 +61,7 @@ export class UserService {
           if (data.item.token) {
                   this.jwtService.saveToken(data.item.token);
                   this.isAuthenticatedSubject.next(true);
-                  this.router.navigate(['dashboard']);
+                  this.router.navigate(['switchMode']);
                   this.currentUserSubject.next(data);
                   // if(window.localStorage['baseData'])
                   // this.BaseConfigSubject.next(JSON.parse(window.localStorage['baseData']))

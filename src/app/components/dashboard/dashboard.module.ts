@@ -8,6 +8,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DxSelectBoxModule } from 'devextreme-angular';
+import { IonRangeSliderModule } from 'ng2-ion-range-slider';
 @NgModule({
   declarations: [ DashboardComponent,HeaderComponent,FooterComponent ],
   imports: [
@@ -16,7 +17,8 @@ import { DxSelectBoxModule } from 'devextreme-angular';
     NgMultiSelectDropDownModule.forRoot(),
     MatDialogModule,
     ModalModule.forRoot(),
-    DxSelectBoxModule
+    DxSelectBoxModule,
+    // IonRangeSliderModule
     
   ],
   schemas: [

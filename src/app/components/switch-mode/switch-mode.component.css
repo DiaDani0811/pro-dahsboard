@@ -1,0 +1,176 @@
+.container1{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+}
+.card{
+    height: 300px;
+    width: 500px;
+    position: relative;
+}
+.card-header{
+    background: rgb(196, 169, 79);
+    color: #fff;
+}
+.btn-light{
+    border-radius: 0;
+    background-color:white ;
+    color: #646464;
+    border: 1px solid;
+}
+.active1{
+      border-radius: 0;
+    background-color: #646464;
+    color: white;
+    border: 1px solid;
+}
+:host ::ng-deep ng-multiselect-dropdown {
+    min-width: 22rem;
+    max-width: 22rem;
+}
+.alignment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+::ng-deep.cdk-overlay-pane{
+    min-width: 27rem !important
+}
+::ng-deep .headerpop .closebtn{display: block !important;}
+:host>>>.dropdown-list{
+    position: fixed !important;
+    width: auto !important;
+}
+::ng-deep .dx-list-item{       text-overflow: initial !important;
+}
+::ng-deep .dx-list-item-content{      text-overflow: inherit !important;
+    white-space: pre-wrap !important;}
+.w-70{
+    width: 3rem;
+}
+.cur-pointer{
+    cursor: pointer;
+}
+
+.m-r-3{
+    margin-right: .7rem;
+}
+nav.navbar .user-size.dropdown-menu {
+    min-width: 250px;
+    overflow: hidden;
+}
+::ng-deep .irs .irs-from, ::ng-deep .irs .irs-to{
+    font-size: 11px !important;
+    display: none;
+}
+::ng-deep .irs:hover .irs-from, ::ng-deep .irs:hover .irs-to{
+    display: block;
+}
+.navbar .navbar-menu-wrapper .navbar-nav .nav-item .welcome-text{
+    font-size: 26px !important;
+}
+::ng-deep .previewli .tooltip{min-width: 150px !important;}
+::ng-deep .irs-from, ::ng-deep .irs-to{    background-color: #5a98e3;
+    border-top: 1px solid #5a98e3;box-shadow: none !important;
+}
+::ng-deep .irs-from:before, ::ng-deep .irs-to:before{    border-top-color: #5a98e3;
+}
+::ng-deep .irs-slider{    background-color: #4f84c4;box-shadow: none !important;
+}
+::ng-deep .irs .irs-to:after{transition: border-top-color .2s;
+    position: absolute;
+    bottom: -10px;
+    left: calc(50% - 10px);
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid;
+    border-top-color: #5a98e3;}
+    ::ng-deep .comparediv .to,::ng-deep .comparediv .from{pointer-events: none !important;}
+    ::ng-deep .irs-slider.state_hover,::ng-deep .irs-slider:hover{background-color: #5a98e3;}
+::ng-deep .irs .irs-min,::ng-deep .irs .irs-max, ::ng-deep .irs .irs-from, ::ng-deep .irs .irs-to{visibility:visible !important}
+::ng-deep .irs .irs-min:before, ::ng-deep .irs .irs-min:before{display: none !important;}
+nav.navbar .dropdown-menu {
+    right: 0;
+    min-width: 300px;
+    left: auto;
+    margin-top: 0;
+    padding: 0;
+    max-width: 400px;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+}
+.period-dropdown.active{
+    color: white;
+    background-color: #4f84c4;
+}
+
+
+.dropdown-menu.show {
+    display: block;
+}
+
+/*::ng-deep .dx-popup-wrapper > .dx-overlay-content{
+   width: 200px !important;
+  }*/
+
+
+.rounded-circle {
+    border-radius: 50% !important;
+}
+
+
+
+.dropdown .dropdown-menu .dropdown-item {
+    font-size: 0.9rem !important;
+}
+
+.user-size i {
+    font-size: 19px !important;
+    margin-right: 10px !important;
+}
+
+#color-hint {
+    background: linear-gradient(gray, white);
+}
+
+.navbar-dropdown {
+    top: inherit !important;
+}
+
+.navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .navbar-dropdown.period {
+    min-width: -webkit-fill-available !important;
+}
+.period-dropdown {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: #1F1F1F;
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+.period-dropdown:hover{
+    color: white;
+    background-color: #4f84c4;
+}
+.period-dropdown:active {
+    color: white;
+    background-color: #4f84c4;
+  }
+.icon-calendar,
+.icon-calendar:before {
+    content: "\e075";
+  }
