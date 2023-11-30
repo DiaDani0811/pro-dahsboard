@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-
+import { UserService } from 'src/app/shared/services/user.service';
+// interface Patient {
+//   bodyPart: string,
+//   dos: string,
+//   patName: string,
+//   patSalutation: string,
+//   procedureType: string,
+//   surgeonName: string
+// }
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -7,50 +15,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private userService:UserService) { }
+  loader:boolean=false;
+  searchText:any
   ngOnInit() {
+    this.getAllPatients()
   }
 
   activeIndex:number=0
-   public ProfileJson = [{ 
-    "title":"Mr.",
-    "name" : "Georghe McClellan",
-    "dos" : "08-21-2022",
-    "serviceLine" : "TKA",
-    "img" : "../../../../assets/images/profile.jpg"
-   },
-   { 
-    "title":"Mr.",
-    "name" : "Rivera Juliette",
-    "dos" : "05-26-2023",
-    "serviceLine" : "PKA",
-    "img" : "../../../../assets/images/profile.jpg"
-   },
-   { 
-    "title":"Mr.",
-    "name" : "Preston Karson",
-    "dos" : "06-22-2022",
-    "serviceLine" : "THA",
-    "img" : "../../../../assets/images/profile.jpg"
-   },
-   { 
-    "title":"Mr.",
-    "name" : "Emma Reagan",
-    "dos" : "06-16-2022",
-    "serviceLine" : "THA",
-    "img" : "../../../../assets/images/profile.jpg"
-   },
-   { 
-    "title":"Mr.",
-    "name" : "Mcclure Cecelia",
-    "dos" : "08-21-2022",
-    "serviceLine" : "TKA",
-    "img" : "../../../../assets/images/profile.jpg"
-   },
-  ]
 
   cehck(data:any){
     console.log('check',data);
+  }
+  allPatientsList:any = [];
+  getAllPatients(){
+    this.loader = true
+    let payload={
+        "hospitalId": localStorage.getItem("hospitalId")
+    }
+    this.userService.getAllPatients(payload).subscribe((data)=>{
+      this.allPatientsList = data
+      this.loader =false
+    })
   }
 }

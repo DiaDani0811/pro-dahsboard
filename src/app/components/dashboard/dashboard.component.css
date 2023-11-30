@@ -205,3 +205,96 @@ nav.navbar .user-size.dropdown-menu li.welcome img {
 .icon-calendar:before {
     content: "\e075";
   }
+
+  .back-to-top {
+    position: fixed;
+    display: none;
+    background: #ff5700;
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    text-align: center;
+    line-height: 2.5rem;
+    font-size: 16px;
+    border-radius: 50%;
+    right: 50%;
+    bottom: 15px;
+    transition: background 0.5s;
+    z-index: 11;
+  }
+  ::ng-deep .multiselect-dropdown .dropdown-btn{    font-size: 12px !important;
+  }
+  .back-to-bottom {
+    position: fixed;
+    display: none;
+    background: #ff5700;
+    color: #fff;
+    width: 44px;
+    height: 44px;
+    text-align: center;
+    line-height: 2.5rem;
+    font-size: 16px;
+    border-radius: 50%;
+    right: 50%;
+    bottom: 15px;
+    transition: background 0.5s;
+    z-index: 11;
+  }
+  ::ng-deep .modal-open .modal{    overflow-y: inherit !important;
+  }
+  .back-to-top i {
+    padding-top: 12px;
+    color: #fff;
+  }
+  @media print {
+    ::ng-deep .doNotPrint {
+      display: none !important;
+    }
+    * {
+      -webkit-print-color-adjust: exact;
+    }
+    @page {
+      margin: 0 !important;
+      size: A4 Landscape !important;
+      -webkit-print-color-adjust: exact;
+    }
+    html,
+    body {
+      margin: 0 !important;
+      size: A4 Landscape !important;
+      -webkit-print-color-adjust: exact;
+    }
+    ::ng-deep .fixed-top {
+      position: relative !important;
+    }
+    ::ng-deep .navbar .navbar-menu-wrapper .navbar-nav .nav-item:last-child{display: block !important;}
+    ::ng-deep .navbar .navbar-menu-wrapper .navbar-nav .nav-item .welcome-text{font-size: 15px !important;    line-height: 36px !important;
+    }
+    ::ng-deep .navbar .navbar-menu-wrapper .navbar-nav .nav-item .welcome-sub-text{font-size: 13px !important;}
+    ::ng-deep  .content-wrapper{    margin-top: 0px !important;
+    }
+    ::ng-deep app-percentagecard .d-none{display: inline-block !important;}
+    ::ng-deep .plinechartsec{margin-top: 200px !important;width: 60% !important}
+    ::ng-deep .plinechartsec canvas{width: 100% !important;}
+    ::ng-deep .pdonutsec{margin-top: 200px !important;    width: 40% !important;
+   }
+    ::ng-deep .ptblsec{margin-top: 130px !important;}
+    ::ng-deep th {
+      font: bold 10px sans-serif;
+      white-space: nowrap;
+    }
+    ::ng-deep .per{    padding: 10px 3px !important;    min-width: 30px;
+    }
+    ::ng-deep td {
+      font: 10px sans-serif;
+    }
+   ::ng-deep .doprint{display: table !important;}
+    ::ng-deep td {
+      text-align: right;
+    }
+    ::ng-deep .per {
+      min-width: 100% !important;
+      padding: 5px 1px !important;
+      font-size: 9px !important;
+  }
+  }

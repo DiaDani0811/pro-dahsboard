@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef,ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit, TemplateRef,ViewChild } from '@angular/core';
 import { BsModalService ,BsModalRef } from 'ngx-bootstrap/modal';
 import { UserService } from 'src/app/shared/services/user.service';
 
@@ -24,8 +24,33 @@ export class DashboardComponent implements OnInit {
 	Ylabel: any = [];
   fromRange : string = 'Q1'
   toRange : string = 'Q12'
+  @HostListener('window:scroll', ['$event']) 
+  scrollHandler(event) {
+    var downbutton:any = document.getElementById("back-to-bottom");
+    var topbutton:any = document.getElementById("back-to-top");
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 150
+    ) {
+      downbutton.style.display = "block";
+      topbutton.style.display = "none";
+    } else {
+      topbutton.style.display = "block";
+      downbutton.style.display = "none";
+    }
+  }
+
+  scrolltoTop(){
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
+  }
+  scrolltoBottom(){
+    document.body.scrollTop = document.body.scrollHeight
+    document.documentElement.scrollTop = document.documentElement.scrollHeight
+  }
   constructor(private user : UserService,private modalService:BsModalService) { }
   reportMasterList : masterList[];
+
   ngOnInit(): void {
     setTimeout(()=>{
       if(!localStorage.getItem('mode'))
@@ -96,9 +121,14 @@ export class DashboardComponent implements OnInit {
 
 	}
 
+  hospitalId:any;
+  hspchangeevent(e:any){
+    this.hospitalId =  e.value 
+  }
   launch(modeType){
-    window.localStorage.setItem('mode', modeType)
-   this.modalRef?.hide();
+    window.localStorage.setItem('mode', modeType);
+    modeType == "PRESENTATION" ? window.localStorage.setItem("hospitalId",this.hospitalId) :  window.localStorage.setItem("hospitalId","0");   
+    this.modalRef?.hide();
   }
 
   hospitalList : any = []
@@ -107,8 +137,5 @@ export class DashboardComponent implements OnInit {
       next:(value)=> {
         this.hospitalList = value
     },})
-  }
-  hspchangeevent(e){
-    console.log('eee',e.value);
   }
 }

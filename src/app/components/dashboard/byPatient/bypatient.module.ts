@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { BypatientRoutingModule } from './bypatient-routing.module';
 import { BypatientComponent } from './bypatient.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   ],
   imports: [
     CommonModule,
-    BypatientRoutingModule
+    BypatientRoutingModule,
+    FormsModule,
+    Ng2SearchPipeModule
   ]
 })
 export class BypatientModule { }

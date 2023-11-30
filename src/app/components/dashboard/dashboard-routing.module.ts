@@ -8,7 +8,6 @@ const routes: Routes = [
     { path:'bypatient',loadChildren:()=>import('../dashboard/byPatient/bypatient.module').then(res=>res.BypatientModule) },
     { path:'bysurgeon',loadChildren:()=>import('../dashboard/bySurgeon/bysurgeon.module').then(res=>res.BysurgeonModule) }
   ]},
- 
 ];
 
 @NgModule({

@@ -82,6 +82,17 @@ export class UserService {
   getReportMasterList(payload) {
     return this.apiService.post('/api/v1/reports/getReportMasterList', payload);
   }
+  getAggregateDashboardData(payload){
+    return this.apiService.post('/api/v1/reports/getAggregateDashboardData',payload)
+  }
+  getAllSurgeons(payload)
+  {
+    return this.apiService.post('/api/v1/reports/getAllSurgeons',payload)
+  }
+  getAllPatients(payload)
+  {
+    return this.apiService.post('/api/v1/reports/getAllPatients',payload)
+  }
   // getAllStaffs(obj) {
   //   return this.apiService.post(`/api/v1/reports/getAllStaffs`, obj);
   // }

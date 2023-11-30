@@ -7,8 +7,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './shared/services/user.service';
 import { ApiService } from './shared/services/api.service'; 
-import { AuthGuard } from './shared/auth-gaurd/auth-guard.service.guard';
-import { NoAuthGuard } from './shared/auth-gaurd/no-auth-guard.service.guard';
+import { AuthGuard } from './shared/auth-guard/auth-guard.service.guard';
+import { NoAuthGuard } from './shared/auth-guard/no-auth-guard.service.guard';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,11 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private userService:UserService) { }
   ngOnInit() {
+    this.getAllSurgeons();
   }
 
+  searchText:any ='';
   activeIndex:number=0
    public ProfileJson = [{ 
     "title":"Mr.",
@@ -49,8 +52,20 @@ export class SidebarComponent implements OnInit {
     "img" : "../../../../assets/images/profile.jpg"
    },
   ]
-
+  surgeonList:any = [];
   cehck(data:any){
     console.log('check',data);
   }
+  getAllSurgeons(){
+    let payload={
+      "hospitalId":localStorage.getItem("hospitalId")
+    }
+    this.userService.getAllSurgeons(payload).subscribe(data=>{
+      this.surgeonList = data
+    })
+  }
+  filterSurgeon(){
+      // this.surgeonForm.controls.
+  }
+
 }
