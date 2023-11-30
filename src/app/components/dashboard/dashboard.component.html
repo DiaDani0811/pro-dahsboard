@@ -1,14 +1,15 @@
 <app-header></app-header>
 <div class="container-fluid" style="margin-top: 6rem!important;">
-    <div class="row mb-2">
-        <div class="col-12">
-            <div class="justify-content-end d-flex ">    
-                
+    <div class="row mb-2 justify-content-end d-flex">
+        <div class="col-2 justify-content-end d-flex p-0 mt-1">
+            <span class="">DOS :</span>
+        </div>
+        <div class="col-2">
+            <div class="">    
                 <div class="input-group date datepicker navbar-date-picker" (click)="openRange(rangeSlider)" >
                     <span class="input-group-addon input-group-prepend border-right">
                        <span class="icon-calendar input-group-text calendar-icon"></span>
                     </span>
-                    
                     <input type="text" class="form-control" style="padding-left:5px;padding-right: 5px;" value="{{'q11'}} to {{'q12'}}" >
                  </div>
             </div>
@@ -92,9 +93,9 @@
 </ng-template>
 
 <ng-template #rangeSlider>
-    <div class="modal-body" style="padding-top: 10px;padding-bottom: 0px;">
+    <div class="modal-body" >
        <div class="row">
-          <div class="col-lg-3 d-flex flex-column" style="border-right: 1px solid #dee2e6;">
+          <div class="col-lg-3 d-flex flex-column" >
              <div class="row">
                 <a  class="period-dropdown py-3"  href="javascript:void(0);" >
                    <h5 class="font-weight-medium small-text mb-0" >sdsdf</h5>

@@ -83,14 +83,14 @@ export class DashboardComponent implements OnInit {
   @ViewChild('categoryTemplate') categoryTemplateRef:TemplateRef<any>
   modalRef?: BsModalRef;
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template, {backdrop : true, ignoreBackdropClick : false, animated : true, class:'alignment'});
+    this.modalRef = this.modalService.show(template, {backdrop : true, ignoreBackdropClick : true, animated : true, keyboard : false, class:'alignment'});
   }
 
   openRange(template: TemplateRef<any>) {
 		var config = {
 			backdrop: false,
 			ignoreBackdropClick: false,
-			class: 'modal-lg range-popup'
+			class: 'modal-md range-popup'
 		};
 		this.modalRef = this.modalService.show(template, config);
 

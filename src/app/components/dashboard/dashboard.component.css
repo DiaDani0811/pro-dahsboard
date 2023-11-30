@@ -201,3 +201,7 @@ nav.navbar .user-size.dropdown-menu li.welcome img {
     color: white;
     background-color: #4f84c4;
   }
+.icon-calendar,
+.icon-calendar:before {
+    content: "\e075";
+  }
