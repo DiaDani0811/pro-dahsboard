@@ -50,7 +50,6 @@ export class BypatientComponent implements OnInit {
           x:{
             labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
             afterFit : ((ctx: any)=>{
-              console.log('ctx',ctx);
             })
           },
           x2 : {

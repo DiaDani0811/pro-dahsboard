@@ -1,54 +1,65 @@
-<div class="container1">
-    <div class="card">
-        <div class="card-header">
-            <h4 class="card-title pull-left">Select Mode to Enter</h4>
+<div class="container-fluid px-4">
+  <button class="float-right backLogin"  (click)="backToLogin()"><- Back to Login</button>
+  <h3 class="fw-bold text-center">Access Portal</h3>
+  <p>
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis
+    repudiandae deleniti voluptatum libero iste atque minus ex aperiam veritatis
+    quam, voluptate velit odit tenetur, nesciunt amet impedit accusamus. Id,
+    vero?
+  </p>
+  <div class="container">
+    <div>
+      <div class="item">
+        <h5 class="fw-bold">Presentation Mode</h5>
+        <img
+          src="./assets/images/hospital.jpg"
+          alt=""
+          (click)="mode = 'P'"
+          class="w-25 mt-3 "
+        />
+        <div style="width: 100%; text-align: left">
+          <label for="email" style="margin-bottom: 10px; font-size: 15px"
+            >Select Hospital:</label
+          >
+          <dx-select-box
+            valueExpr="rcId"
+            [searchEnabled]="true"
+            displayExpr="clientName"
+            placeholder="Select Hospital..."
+            [dataSource]="hospitalList"
+            (onValueChanged)="hspchangeevent($event)"
+          ></dx-select-box>
         </div>
-        <div class="card-body">
-            <div  *ngIf="mode == 'A'">
-                <div class="row row-xs">
-                    <div class="col-md-6 text-center mt-5 mb-3 cur-pointer" >
-                        <img src="./assets/images/presentation.png" alt="" (click)="mode = 'P'" class="w-70" />
-                        <h6>Presentation Mode</h6>
-                    </div>
-                    <div class="col-md-6 text-center mt-5 mb-3 cur-pointer">
-                        <img src="./assets/images/adminmode.svg" alt="" class="w-70" id="adminmode" (click)="launch('ADMIN')" />
-                        <h6>Admin Mode</h6>
-                    </div>
-                    
-                </div>
-            </div>
-    
-            <!-- if presentation mode selects this div will open for selecting hospital  -->
-             <div *ngIf="mode == 'P'">
-                <div class="row row-xs">
-                    <div class="col-sm text-center mt-5 mb-3">
-                        <img src="./assets/images/presentation.png" alt="" class="w-70" />
-                        <h6>Presentation Mode</h6>
-                    </div>
-                    <div class="col-sm mt-5 mb-5 text-center">
-                        <div>
-                            <div style="width: 100%;text-align: left;">
-                                <label for="email" style="margin-bottom: 10px;">Select Hospital:</label>
-                                <dx-select-box valueExpr="rcId" [searchEnabled]="true"  displayExpr="clientName"
-                                 placeholder="Select Hospital..." [dataSource]="hospitalList"
-                                     (onValueChanged)="hspchangeevent($event)"></dx-select-box>
-                                     <!-- [value]="sosSelectedItems" -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm lan-class pull-right">
-                    <span class="m-r-3">
-                        <button class="btn btn-sm btn-primary"  (click)="launch('PRESENTATION')">
-                            Launch</button>
-                    </span>
-                    <span>
-                        <button class="btn btn-sm btn-secondary" (click)="mode = 'A'" tabindex="0">Cancel</button>
-                    </span>
-                </div>
-            </div>
-        </div>
-    
+
+        <button
+          class="btn btn-primary"
+          style="display: block"
+          (click)="launch('PRESENTATION')">
+          select
+        </button>
+
+      </div>
     </div>
-    
+    <div>
+      <div class="item">
+        <h5 class="fw-bold">Admin Mode</h5>
+      <img
+        src="./assets/images/admin.jpg"
+        alt=""
+        class="w-25 mt-3"
+        id="adminmode"
+      />
+      <p class="text-center mt-5">An admin panel enables administrators</p>
+      <button
+        class="btn btn-primary"
+        style="display: block"
+        (click)="launch('ADMIN')"
+      >
+        select
+      </button>
+      </div>
+    </div>
+    </div>
+
 </div>
+

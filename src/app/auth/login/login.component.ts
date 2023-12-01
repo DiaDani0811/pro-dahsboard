@@ -18,6 +18,7 @@
     }
 
     ngOnInit() {
+
     }
     login(){
       let payload = {
@@ -27,9 +28,11 @@
       this.userService.isAuthenticated
       this.userService.attemptAuth(payload).subscribe(data => {
         if (data) {
-          this.router.navigateByUrl("/switcMode")
+          // this.router.navigateByUrl("/switcMode")
+          this.router.navigate(['switchMode']);
         }
       })
     }
+ 
     
   }

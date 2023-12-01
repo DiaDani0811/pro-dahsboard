@@ -5,12 +5,6 @@ import { RecoveryComponent } from './recovery/recovery.component';
 import { LongtermComponent } from './longterm/longterm.component';
 
 const routes: Routes = [
-  {
-    path:'',component:AggregateComponent,children:[
-      {path:'',component:RecoveryComponent , outlet:'rec'},
-    {path:'',component:LongtermComponent,outlet:'long'}
-    ]
-  }
 ];
 
 @NgModule({

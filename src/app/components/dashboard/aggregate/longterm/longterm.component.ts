@@ -12,4 +12,8 @@ export class LongtermComponent implements OnInit {
     ngOnInit(): void {
     }
 
+    Hoos : string = 'HOOS'
+    Koos : string = 'KOOS'
+    Pain : string = 'PAIN'
+
 }

@@ -1,4 +1,4 @@
-import { NgModule,NO_ERRORS_SCHEMA ,CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
@@ -8,9 +8,26 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { DxSelectBoxModule } from 'devextreme-angular';
-import { IonRangeSliderModule } from 'ng2-ion-range-slider';
+import { NgxSliderModule } from '@angular-slider/ngx-slider'
+import { FormsModule } from '@angular/forms';
+import { AggregateComponent } from './aggregate/aggregate.component';
+import { RecoveryComponent } from './aggregate/recovery/recovery.component';
+import { LongtermComponent } from './aggregate/longterm/longterm.component';
+import { AggregatechartComponent } from './aggregate/aggregatechart/aggregatechart.component';
+import { BysurgeonComponent } from './bySurgeon/bysurgeon.component';
+import { BypatientComponent } from './byPatient/bypatient.component';
+import { SidebarComponent } from './byPatient/sidebar/sidebar.component';
 @NgModule({
-  declarations: [ DashboardComponent,HeaderComponent,FooterComponent ],
+  declarations: [DashboardComponent,
+    HeaderComponent,
+    AggregatechartComponent,
+    FooterComponent,
+    BysurgeonComponent,
+    BypatientComponent,
+    AggregateComponent,
+    RecoveryComponent,
+    LongtermComponent,
+    SidebarComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -18,8 +35,8 @@ import { IonRangeSliderModule } from 'ng2-ion-range-slider';
     MatDialogModule,
     ModalModule.forRoot(),
     DxSelectBoxModule,
-    // IonRangeSliderModule
-    
+    NgxSliderModule
+
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

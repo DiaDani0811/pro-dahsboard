@@ -2,13 +2,17 @@
 
 <div class="card mb-5">
     <div class="row text-center p-2">
-        <div class="col-4" style="font-weight: bold;">HOOS</div>
-        <div class="col-4" style="font-weight: bold;">KOOS</div>
-        <div class="col-4" style="font-weight: bold;">PAIN</div>
-    </div>
-    <div class="row p-2">
-        <app-hoos-long class="col-4"></app-hoos-long>
-        <app-koos-long class="col-4"></app-koos-long>
-        <app-pain-long class="col-4"></app-pain-long>
+        <div class="col-4" style="font-weight: bold;">
+            <label for="hoos">HOOS</label>
+            <app-aggregatechart class="col-4" id="hoos" [aggregateChartId]="Hoos"></app-aggregatechart>
+        </div>
+        <div class="col-4" style="font-weight: bold;">
+            <label for="hoos">KOOS</label>
+            <app-aggregatechart class="col-4" id="koos" [aggregateChartId]="Koos"></app-aggregatechart>
+        </div>
+        <div class="col-4" style="font-weight: bold;">
+            <label for="hoos">PAIN</label>
+            <app-aggregatechart class="col-4" [aggregateChartId]="Pain"></app-aggregatechart> 
+        </div>
     </div>
 </div>

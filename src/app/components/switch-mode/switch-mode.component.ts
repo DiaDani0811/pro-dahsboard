@@ -14,7 +14,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 export class SwitchModeComponent implements OnInit {
   mode= 'A';
   constructor(private user : UserService,private router : Router) { }
-
+  disableButton : boolean = true;
   ngOnInit(): void {
       this.getClientListFromApi();
   }
@@ -28,12 +28,19 @@ export class SwitchModeComponent implements OnInit {
   hospitalId:any;
   hspchangeevent(e:any){
     this.hospitalId =  e.value 
+    console.log('this.hospitalId.length>0',this.hospitalId);
+    if(this.hospitalId){
+      this.disableButton = false
+    }
   }
   launch(modeType){
     window.localStorage.setItem('mode', modeType);
     modeType == "PRESENTATION" ? window.localStorage.setItem("hospitalId",this.hospitalId) :  window.localStorage.setItem("hospitalId","0");   
     this.router.navigateByUrl('/dashboard');
   }
-
+  backToLogin(){
+      this.user.clearSession();
+      this.router.navigateByUrl('/login')
+  }
 
 }

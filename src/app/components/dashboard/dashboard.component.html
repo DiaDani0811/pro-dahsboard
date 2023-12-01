@@ -10,28 +10,37 @@
                     <span class="input-group-addon input-group-prepend border-right">
                        <span class="icon-calendar input-group-text calendar-icon"></span>
                     </span>
-                    <input type="text" class="form-control" style="padding-left:5px;padding-right: 5px;" value="{{'q11'}} to {{'q12'}}" >
+                    <input type="text" class="form-control" style="padding-left:5px;padding-right: 5px;" value="{{baseData?.fromRange}} to {{baseData?.toRange}}">
                  </div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-6">
-            <button class="btn btn-light" routerLink="aggregate"  routerLinkActive="active1"> Aggregate</button>
-            <button class="btn btn-light"  routerLink="bysurgeon" routerLinkActive="active1">By Surgeon</button>
-            <button class="btn btn-light"  routerLink="bypatient" routerLinkActive="active1">By Patient</button>
+            <button class="btn btn-light" (click)="setActive('Aggregate')" [ngClass]="isActive == 'Aggregate'?'active1':''">Aggregate</button>
+            <button class="btn btn-light" (click)="setActive('Surgeon')" [ngClass]="isActive == 'Surgeon'?'active1':''">By Surgeon</button>
+            <button class="btn btn-light" (click)="setActive('Patient')" [ngClass]="isActive == 'Patient'?'active1':''">By Patient</button>
         </div>
         <div class="col-6 d-flex justify-content-end">
             <label for="dropdown" class="m-2">Select Assesment</label>
+
+            <form [formGroup]="dropdownFrom" >
+
+                <!-- (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)" -->
             <ng-multiselect-dropdown #multiSelect [placeholder]="'Select Assesment'" [data]="reportMasterList" [settings]="settings"
-                [disabled]="false" (onSelect)="onItemSelect($event)" (onDeSelect)="onDeSelect($event)" 
-                (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)">
+                (onSelect)="onItemSelect($event)" (onDeSelect)="onDeSelect($event)"  [formControl]="form.names"
+                  (onFilterChange)="onFilterChange($event)"
+                (onDropDownClose)="onDropDownClose($event)">
             </ng-multiselect-dropdown>
+            </form>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <router-outlet></router-outlet>
+            <!-- <router-outlet></router-outlet> -->
+            <app-aggregate *ngIf="isActive == 'Aggregate'" [selectedAssesment]="selectedassesment"></app-aggregate>
+            <app-bysurgeon *ngIf="isActive == 'Surgeon'"></app-bysurgeon>
+            <app-bypatient *ngIf="isActive == 'Patient'"></app-bypatient> 
         </div>
     </div>
    
@@ -43,14 +52,16 @@
        <div class="row">
           <div class="col-lg-3 d-flex flex-column" >
              <div class="row">
-                <a  class="period-dropdown py-3"  href="javascript:void(0);" >
-                   <h5 class="font-weight-medium small-text mb-0" >sdsdf</h5>
+                <a *ngFor="let data of periodList" class="period-dropdown py-3"  href="javascript:void(0);" [ngClass]="{'active':baseData?.period == data.periodId}">
+                    <h5 class="font-weight-medium small-text mb-0" >{{data.periodName}}</h5>
                 </a>
              </div>
           </div>
           <div class="col-lg-9 d-flex flex-column" >
             <div class="row flex-grow" style="overflow: hidden;" >
              <h4 style="font-weight:500;">Date of Surgery</h4>
+             <ngx-slider [value]="fromRange" [highValue]="toRange" [options]="options" 
+             (valueChange)="fromValueChange($event)" (highValueChange)="toValueChange($event)"></ngx-slider>
                 <!-- <ion-range-slider #sliderElement type="double" [values]="label"  [from]="fromRange" [to]="toRange" style="padding: 25px;margin-top: 2px;"></ion-range-slider> -->
                <!-- <ion-range-slider #sliderElement type="double" step="1"  [values]="Mlabel" (onFinish)="myOnChange($event)" [from]="fromRange" [to]="toRange" style="padding: 25px;margin-top: 2px;" *ngIf="baseData?.period =='M'"></ion-range-slider>
                 <ion-range-slider #sliderElement type="double" [values]="Ylabel" prettify_enabled="false" (onFinish)="myOnChange($event)" [from]="fromRange" [to]="toRange" style="padding: 25px;margin-top: 2px;"*ngIf="baseData?.period =='Y'"></ion-range-slider>       -->
@@ -73,8 +84,8 @@
        </div>
     </div>
     <div class="modal-footer">
-       <button type="button" class="btn btn-secondary btn-sm">Close</button>
-       <button type="button" class="btn btn-primary btn-sm" >Apply</button>
+        <button type="button" class="btn btn-secondary btn-sm" (click)="rangeModal.hide();">Close</button>
+        <button type="button" class="btn btn-primary btn-sm" (click)="savePeriodRange()">Apply</button>
     </div>
  </ng-template>
 <app-footer></app-footer>

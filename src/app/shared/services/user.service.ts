@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, ReplaySubject } from 'rxjs';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, ReplaySubject } from 'rxjs'
 import { distinctUntilChanged, map } from 'rxjs/operators';
 import { ApiService } from './api.service';
 import { JwtService } from './jwt.service';
+import { BaseConfig } from '../modals/baseConfig.modal';
 @Injectable({providedIn:"root"})
 export class UserService {
 
@@ -15,6 +15,9 @@ export class UserService {
 
   public currentUserSubject = new BehaviorSubject<any>([]);
   public currentUser = this.currentUserSubject.asObservable().pipe(distinctUntilChanged());
+
+  public baseCongifSubject = new BehaviorSubject<BaseConfig>(new BaseConfig())
+  public baseConfig = this.baseCongifSubject.asObservable().pipe(distinctUntilChanged())
 
   private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
@@ -61,10 +64,9 @@ export class UserService {
           if (data.item.token) {
                   this.jwtService.saveToken(data.item.token);
                   this.isAuthenticatedSubject.next(true);
-                  this.router.navigate(['switchMode']);
                   this.currentUserSubject.next(data);
-                  // if(window.localStorage['baseData'])
-                  // this.BaseConfigSubject.next(JSON.parse(window.localStorage['baseData']))
+                  if(window.localStorage['baseData'])
+                  this.baseCongifSubject.next(JSON.parse(window.localStorage['baseData']))
         }
       },
       error:(err) => {
