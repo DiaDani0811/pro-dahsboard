@@ -1,32 +1,69 @@
 <div class="row mt-3">
     <div class="col-4">
-        <app-sidebar></app-sidebar>
+        <div class="card" style="height: 430px;">
+            <div class="card-header CH">
+                <div>
+                    <div class="input-group-prepend">
+                        <input type="search" class="form-control" [(ngModel)]="searchText" placeholder="Search Patient" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                  </div>
+            </div>
+            <div class="card-body CH " style="height: 430px;">
+              <div class="mt-3" >
+                <div  class="card" style="height: 300px;overflow-y: auto;background-color: rgb(131, 140, 139)" *ngIf="allPatientsList.length > 0">
+                  <ng-container  *ngFor="let data of allPatientsList let i = index">
+                    <div [ngClass]="activeIndex==i ? 'rowCss':''" style="margin: 6px 8px 11px 6px;cursor: pointer;" class="row mb-3" (click)="activeIndex=i">
+                      <div class="col-3">
+                        <img [src]="img_src" height="50" width="50" class="mt-3" style="border-radius: 5px;" alt="">
+                      </div>
+                      <div class="col-9">
+                        <div class="mt-3">
+                        <p class="mt-1 fullName">{{data.fullName}}</p>
+                        <p class="dos">DOS:{{data.dos}}
+                          <span ><i class="fa-solid fa-circle-chevron-right float-right mr-2 mt-1" style="color: rgba(247, 150, 4, 0.863); font-size: larger;"></i></span>
+                        </p>
+                        <p class="dos">{{data.procedureType}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+                  <!-- <h5 class="text-light dataNotFound"  *ngIf="allPatientsList.length == 0 ">Data Not Found</h5> -->
+              </div>
+              
+              <div class="loader" *ngIf="loader">
+                <li class="ball"></li>
+                <li class="ball"></li>
+                <li class="ball"></li>
+              </div>
+            </div>
+          
+          </div>          
     </div>
 
     <div class="col-8">
-        <div>
-            <div class="card mb-4">
+            <div class="card mb-4"  >
                 <div class="card">
-                    <div class="row">
+                    <div class="row" style="background-color: white !important;" >
                         <div class="col-2">
                             <img src="../../../../assets/images/profile.jpg" height="75" width="75">
                         </div>
                         <div class="col-5 p-3">
-                            <span style="font-weight: bold; font-size: x-large; color: grey;">Mr. George McCellan</span> <br>
-                            <span style="font-weight: bold;font-size: large; color: #f8a62b;">Total Knee Replacement</span>
+                            <span style="font-weight: bold; font-size: x-large; color: grey; background-color: white !important;">Mr. George McCellan</span> <br>
+                            <span style="font-weight: bold;font-size: large; color: #f8a62b;background-color: white !important;">Total Knee Replacement</span>
                         </div>
                         <div class="col-5 p-3">
                             <div class="row mb-2" >
-                                <span class="col-6" style="font-weight: bolder;">Surgeon Name  </span>
-                                <span class="col-6">: Robert Peterson</span>
+                                <span class="col-6" style="font-weight: bolder;background-color: white !important;">Surgeon Name  </span>
+                                <span class="col-6" style="background-color: white;"    >: Robert Peterson</span>
                             </div>
                             <div class="row mb-2" >
-                                <span class="col-6" style="font-weight: bolder;">DOS  </span>
-                                <span class="col-6">: 08-21-2022</span>
+                                <span class="col-6" style="font-weight: bolder;background-color: white !important;">DOS  </span>
+                                <span class="col-6" style="background-color: white;">: 08-21-2022</span>
                             </div>
                             <div class="row mb-2" >
-                                <span class="col-6" style="font-weight: bolder;">Body Part </span>
-                                <span class="col-6"> : Knee</span>
+                                <span class="col-6" style="font-weight: bolder;background-color: white !important;">Body Part </span>
+                                <span class="col-6" style="background-color: white;"> : Knee</span>
                             </div>
                         </div>
                     </div>
@@ -61,6 +98,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+      
     </div>
 </div>

@@ -16,7 +16,7 @@ import { LongtermComponent } from './aggregate/longterm/longterm.component';
 import { AggregatechartComponent } from './aggregate/aggregatechart/aggregatechart.component';
 import { BysurgeonComponent } from './bySurgeon/bysurgeon.component';
 import { BypatientComponent } from './byPatient/bypatient.component';
-import { SidebarComponent } from './byPatient/sidebar/sidebar.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [DashboardComponent,
     HeaderComponent,
@@ -27,7 +27,7 @@ import { SidebarComponent } from './byPatient/sidebar/sidebar.component';
     AggregateComponent,
     RecoveryComponent,
     LongtermComponent,
-    SidebarComponent],
+    ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -35,8 +35,9 @@ import { SidebarComponent } from './byPatient/sidebar/sidebar.component';
     MatDialogModule,
     ModalModule.forRoot(),
     DxSelectBoxModule,
-    NgxSliderModule
-
+    NgxSliderModule,
+    Ng2SearchPipeModule
+ 
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

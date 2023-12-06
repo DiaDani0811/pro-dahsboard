@@ -1,7 +1,33 @@
 <div class="container-fluid mt-3 p-0">
     <div class="row">
         <div class="col-4">
-          <app-sidebar></app-sidebar>
+            <div class="card " style=" height: 430px;">
+                <div class="card-header CH">
+                    <div>
+                        <div class="input-group-prepend">
+                              <input type="text" name="search" class="form-control" [(ngModel)]="searchText" placeholder="Search Surgeon" autocomplete="off"  >
+                        </div>
+                      </div>
+                </div>
+                <div class="card-body CH">
+                  <div class="mt-3">
+                    <div class="card" style="height: 300px;overflow-y: auto;" *ngIf="surgeonList.length >0">
+                      <ng-container *ngFor="let data of surgeonList | filter:searchText; let i = index">
+                        <div [ngClass]="activeIndex==i ? 'rowCss':''" style="margin: 6px 8px 11px 6px;cursor: pointer;" class="row mb-1" (click)="activeIndex=i">
+                          <div class="col-3">
+                            <img [src]="imgsrc" height="50" width="50" class="mt-3" style="border: 3px solid rgb(131, 140, 139);" alt="">
+                          </div>
+                          <div class="col-9">
+                            <p class="mt-4 fullName">{{data.fullName}}
+                              <span ><i class="fa-solid fa-circle-chevron-right float-right mr-2 mt-1" style="color: rgba(247, 150, 4, 0.863); font-size: larger;"></i></span>
+                            </p>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+                </div>
+              </div>              
         </div>
         <div class="col-8">
                 <div class="card mb-4">
@@ -25,11 +51,16 @@
                             </div>
                         </div>
                     </div>
+                <div class="m-3">
                 <button class="button mt-3 mb-2 ms-3">Case Volume </button>
-                <app-casevolume class="p-2"></app-casevolume>
-                <button class="button mt-3 mb-2 ms-3">Hoos</button> 
-                <app-hoos class="p-2"></app-hoos>   
-                   
+                <div class="card linechartcard" style="width: 100%;">
+                  <canvas id="casevolume" height="25" width="100"></canvas>
+                 </div>
+                  <button class="button mt-3 mb-2 ms-3">Hoos</button> 
+                 <div class="card linechartcard" style="width: 100%">
+                   <canvas id="hoosSurgen" height="25" width="100"></canvas>
+                 </div>
+                </div> 
                 </div>
            
         </div>

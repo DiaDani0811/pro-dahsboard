@@ -1,80 +1,59 @@
-<div class="container-fluid">
-  <div class="row loginContainer">
-    <div class="col-md-6">
+<div class="mainContainer">
+  <div class="grid">
+    <div class="leftSide centered no__overflow">
       <img
+        class="img"
         src="../../../assets/images/login_img.jpg"
-        class="banner-sec"
-        alt=""
+        alt="picture"
       />
     </div>
-    <div class="col-md-6 login-sec">
-      <div class="row">
-        <div class="col-11 col-lg-10 mx-auto">
-          <form [formGroup]="loginForm">
-            <div class="mt-4">
-              <h2 class="text-center mt-5">Login</h2>
-            </div>
-            <div class="mb-3">
-              <input
-                type="email"
-                class="form-control email"
-                id="email"
-                required=""
-                name="password"
-                placeholder="Enter Email"
-                formControlName="email"
-              />
-            </div>
-            <div class="mb-3">
-              <input
-                type="password"
-                class="form-control password"
-                id="password"
-                required=""
-                name="password"
-                placeholder="Enter Password"
-                formControlName="password"
-              />
-            </div>
-            <div class="row my-4">
-              <div class="col">
-                <div class="form-check">
-                  <input
-                    id="remember-me"
-                    class="mr-2"
-                    name="remember"
-                    type="checkbox"
-                  />
-                  <small for="remember-me">Remember Me</small>
-                </div>
-              </div>
-              <div class="col text-2 text-end">
-                <a
-                  href=""
-                  data-bs-toggle="modal"
-                  data-bs-target="#forgot-password-modal"
-                  data-bs-dismiss="modal"
-                  >Forgot Password ?</a
-                >
-              </div>
-            </div>
-            <div class="d-grid my-4">
-              <button class="submitButton" type="submit" (click)="login()">
-                Login
-              </button>
-            </div>
-          </form>
-          <p class="text-2 text-center mb-0">
-            <a
-              href=""
-              data-bs-toggle="modal"
-              data-bs-target="#register-modal"
-              data-bs-dismiss="modal"
-              >Create an account</a
-            >
-          </p>
+    <!-- rightSide centered no__overflow -->
+    <div class="rightSide centered">
+      <div class="form">
+        <h3 class="loginHeader">Login</h3>
+        <form [formGroup]="loginForm">
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Email"
+          formControlName="email"
+          autocomplete="off"
+        />
+    
+        <input
+          type="password"
+          id="password"
+          name="password"
+          formControlName="password"
+          placeholder="Password"
+          autocomplete="off"
+        />
+  
+        <div class="justify__space_between">
+          <span>
+            <input
+              type="checkbox"
+              id="remember_me"
+              name="remember_me"
+              value="remember_me"
+            />
+            <label for="remember_me" class="remember_me">Remember Me</label><br />
+          </span>
+          <a href="#" class="forgot__password">Forgot Password?</a>
         </div>
+        <button type="submit" class="login__button" (click)="login()">Login</button>
+        <div class="signup">
+          <label class="remember_me"> Don't have an account?</label>
+          <a href="#" class="forgot__password" style="text-decoration: none">
+            <strong>Sign up for free.</strong>
+          </a>
+        </div>
+      </form>
       </div>
     </div>
+    <!-- leftSide centered -->
   </div>
 </div>
+
+<!-- end grid -->

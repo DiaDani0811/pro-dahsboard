@@ -1,13 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user.service';
-// interface Patient {
-//   bodyPart: string,
-//   dos: string,
-//   patName: string,
-//   patSalutation: string,
-//   procedureType: string,
-//   surgeonName: string
-// }
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',

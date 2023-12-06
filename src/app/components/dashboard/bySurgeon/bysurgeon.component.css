@@ -19,3 +19,54 @@ img{
     border-radius:5px ;
     margin: 20px;
 }
+.row{
+    background-color: white;
+}
+.rowCss{
+    border: 5px solid rgba(247, 150, 4, 0.863); 
+
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 20px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px white; 
+    /* border-radius: 10px; */
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: white; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: white; 
+  }
+  .dataNotFound{
+    position: absolute;
+    top: 50%;
+    left: 40%;
+  }
+  .surgeonValues{
+    display: flex;
+    position: relative;
+    height: auto;
+    width: 100%;
+  }
+  .fullName{
+    font-size: 14px;
+    font-weight: 600;
+   
+  }
+  .linechartcard{
+    border-radius: 0;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 1px 3px 0 rgba(31, 38, 135, 0.37);
+}

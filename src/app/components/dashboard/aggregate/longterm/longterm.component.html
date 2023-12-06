@@ -2,17 +2,9 @@
 
 <div class="card mb-5">
     <div class="row text-center p-2">
-        <div class="col-4" style="font-weight: bold;">
-            <label for="hoos">HOOS</label>
-            <app-aggregatechart class="col-4" id="hoos" [aggregateChartId]="Hoos"></app-aggregatechart>
-        </div>
-        <div class="col-4" style="font-weight: bold;">
-            <label for="hoos">KOOS</label>
-            <app-aggregatechart class="col-4" id="koos" [aggregateChartId]="Koos"></app-aggregatechart>
-        </div>
-        <div class="col-4" style="font-weight: bold;">
-            <label for="hoos">PAIN</label>
-            <app-aggregatechart class="col-4" [aggregateChartId]="Pain"></app-aggregatechart> 
+        <div class="col-4" style="font-weight: bold;" *ngFor="let data of selectedAssesmentData; let i = index;">
+            <label for="hoos">{{data.metricName}}</label>
+            <app-aggregatechart class="col-4" id="hoos" [aggregateChartId]="data.metricName+'lt'" [chartData]="chartData" ></app-aggregatechart>
         </div>
     </div>
 </div>

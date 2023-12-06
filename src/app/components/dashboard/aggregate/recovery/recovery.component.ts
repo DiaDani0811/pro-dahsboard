@@ -8,7 +8,7 @@ import {Chart, registerables} from 'node_modules/chart.js'
   styleUrls: ['./recovery.component.css']
 })
 export class RecoveryComponent implements OnInit {
-
+  @Input() chartData :any = []
   constructor() { 
     Chart.register(...registerables)
   }
@@ -19,7 +19,8 @@ export class RecoveryComponent implements OnInit {
     Pain : string = 'PAIN1'
     @Input() selectedAssesmentData : any
   ngOnInit(): void {
-    //console.log('recovery',this.selectedAssesmentData);
+    // console.log('recovery',this.selectedAssesmentData);
+    console.log('chartData',this.chartData);
   }
 
 }

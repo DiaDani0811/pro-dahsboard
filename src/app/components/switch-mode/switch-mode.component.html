@@ -1,65 +1,67 @@
-<div class="container-fluid px-4">
-  <button class="float-right backLogin"  (click)="backToLogin()"><- Back to Login</button>
-  <h3 class="fw-bold text-center">Access Portal</h3>
-  <p>
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis
-    repudiandae deleniti voluptatum libero iste atque minus ex aperiam veritatis
-    quam, voluptate velit odit tenetur, nesciunt amet impedit accusamus. Id,
-    vero?
-  </p>
-  <div class="container">
-    <div>
-      <div class="item">
-        <h5 class="fw-bold">Presentation Mode</h5>
-        <img
-          src="./assets/images/hospital.jpg"
-          alt=""
-          (click)="mode = 'P'"
-          class="w-25 mt-3 "
-        />
-        <div style="width: 100%; text-align: left">
-          <label for="email" style="margin-bottom: 10px; font-size: 15px"
-            >Select Hospital:</label
-          >
-          <dx-select-box
-            valueExpr="rcId"
-            [searchEnabled]="true"
-            displayExpr="clientName"
-            placeholder="Select Hospital..."
-            [dataSource]="hospitalList"
-            (onValueChanged)="hspchangeevent($event)"
-          ></dx-select-box>
+
+
+<div class="container-fluid px-4">  
+  <button for="" class="backToLogin" (click)="backToLogin()">Back to Login</button>
+    <div class="container_card">
+      <div class="containerCard">
+        <div class="card">
+          <h5 class="fw-bold text-center">Presentation Mode</h5>
+          <img
+            src="./assets/images/hospital.jpg"
+            alt=""
+            (click)="mode = 'P'"
+            class="cardImg mt-3 "/>
+          <div class="text-start mt-5">
+            <label for="email" style="margin-bottom: 10px; font-size: 15px">Select Hospital:</label>
+            <dx-select-box
+              valueExpr="rcId"
+              [searchEnabled]="true"
+              displayExpr="clientName"
+              placeholder="Select Hospital..."
+              [dataSource]="hospitalList"
+              (onValueChanged)="hspchangeevent($event)"
+            ></dx-select-box>
+          </div>
+          <div class="p-4">
+            <ul>
+              <li>demo</li>  
+            </ul>
+          </div>
+  
+          <button
+            class="btn btn-primary"       
+            (click)="launch('PRESENTATION')"
+            [disabled]="!hospitalId">
+            select
+          </button>
+  
         </div>
-
-        <button
-          class="btn btn-primary"
-          style="display: block"
-          (click)="launch('PRESENTATION')">
-          select
-        </button>
-
+        <div class="card">
+          <h5 class="fw-bold text-center">Admin Mode</h5>
+          <img
+            src="./assets/images/admin.jpg"
+            alt=""
+            class="cardImg mt-3"
+            
+            id="adminmode"
+          />
+          <div class="p-4 ">
+            <ul >
+             <li>An admin panel enables administrators</li>
+             <!-- <li>Lorem ipsum dolor sit amet, co loremn\
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum quod aspernatur molestiae vitae. Distinctio exercitationem totam perspiciatis ea labore fugiat explicabo molestiae, amet asperiores. Ab, eveniet reprehenderit! Repudiandae, ut reprehenderit? sectetur adipisicing elit. Iure iusto, quaerat molestias eum in impedit laborum exercitationem id repellat, architecto corporis, quo voluptatibus placeat sint laudantium dignissimos. Incidunt, deserunt commodi.</li>     -->
+            </ul>
+          </div>
+          <div >
+          <button
+            class="btn btn-primary"
+            (click)="launch('ADMIN')">
+            select
+          </button>
+        </div>
+        </div>
       </div>
     </div>
-    <div>
-      <div class="item">
-        <h5 class="fw-bold">Admin Mode</h5>
-      <img
-        src="./assets/images/admin.jpg"
-        alt=""
-        class="w-25 mt-3"
-        id="adminmode"
-      />
-      <p class="text-center mt-5">An admin panel enables administrators</p>
-      <button
-        class="btn btn-primary"
-        style="display: block"
-        (click)="launch('ADMIN')"
-      >
-        select
-      </button>
-      </div>
-    </div>
-    </div>
-
+ 
 </div>
 

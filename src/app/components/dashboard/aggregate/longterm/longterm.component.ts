@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-longterm',
@@ -6,14 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./longterm.component.css']
 })
 export class LongtermComponent implements OnInit {
-
+  @Input() chartData : any
   constructor() { }
+  @Input() selectedAssesmentData : any
+  ngOnInit(): void {
+    console.log('long',this.selectedAssesmentData,this.chartData);
+  }
 
-    ngOnInit(): void {
-    }
-
-    Hoos : string = 'HOOS'
-    Koos : string = 'KOOS'
-    Pain : string = 'PAIN'
 
 }

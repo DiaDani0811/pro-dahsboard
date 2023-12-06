@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js/auto';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-bypatient',
@@ -8,10 +9,35 @@ import { Chart } from 'chart.js/auto';
 })
 export class BypatientComponent implements OnInit {
 
-  constructor() { }
 
   ngOnInit(): void {
     this.renderChart();
+    this.getAllPatients()
+  }
+  
+  constructor(private userService:UserService) { }
+  loader:boolean=false;
+  searchText:any
+  img_src:string = "../../../../assets/images/profile.jpg";
+  activeIndex:number=0
+  cehck(data:any){
+    console.log('check',data);
+  }
+  allPatientsList:any = [];
+  getAllPatients(){
+    this.loader = true
+    let payload={
+        "hospitalId": localStorage.getItem("hospitalId")
+    }
+    this.userService.getAllPatients(payload).subscribe((data)=>{
+    if(data){
+      this.allPatientsList = data
+      this.allPatientsList.forEach(element => {
+        element.fullName = element.patSalutation+element.patName
+      });
+      this.loader =false
+    }
+    })
   }
 
   lables: any = ["Pre Op", "Recovery", "Long Term Follow-up"];
@@ -90,5 +116,8 @@ export class BypatientComponent implements OnInit {
     "Score" : 50
   },
 ]
+
+
+
 }
  

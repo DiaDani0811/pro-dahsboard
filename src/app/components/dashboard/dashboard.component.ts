@@ -1,6 +1,7 @@
 import { Options } from '@angular-slider/ngx-slider';
 import { Component, HostListener, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup ,FormControl, Validators} from '@angular/forms';
+import { data } from 'jquery';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { UserService } from 'src/app/shared/services/user.service';
 
@@ -50,7 +51,6 @@ export class DashboardComponent implements OnInit {
   constructor(private user : UserService,private modalService:BsModalService) { }
   reportMasterList : masterList[];
 
-  periodList: any;
   baseData : any ;
   comparision = {
 		'enable': false,
@@ -58,34 +58,32 @@ export class DashboardComponent implements OnInit {
 		'toRange': ""
 	}
   ngOnInit(): void {
-        this.periodList = [
-			{ periodId: 'Q', periodName: 'Quarter' },
-			{ periodId: 'M', periodName: 'Month' },
-			{ periodId: 'Y', periodName: 'Year' }]
-      
-      this.setForm();
-
-    setTimeout(()=>{
-      if(!localStorage.getItem('mode'))
-      this.openModal(this.categoryTemplateRef)
+  
       this.getReportMasterListFromApi();
-    },1000)
+  
 
   }
-
+  selectedReportMasterList : any = []
   getReportMasterListFromApi() {
     var payload = {
       "categoryId": 4,
       "clientId": localStorage.getItem('hospitalId') ? localStorage.getItem('hospitalId') : 0
     }
-    this.user.getReportMasterList(payload).subscribe({
-      next: (value) => {
-        this.reportMasterList = value
+    this.user.getReportMasterList(payload).subscribe(data=>{
+      this.reportMasterList= data
+      // this.selectedReportMasterList = this.reportMasterList.filter((element:any)=>{
+      //   if(element.metricId== 11 || element.metricId != 12 || element.metricId == 14){
+      //     this.selectedassesment 
 
-      },
-    })
+      //   }
+      //   console.log('element',element);
+       
+      // })
+
+    }  
+    )
   }
-
+ 
   settings = {
     singleSelection: false,
     idField: 'metricId',
@@ -106,7 +104,11 @@ export class DashboardComponent implements OnInit {
   };
 
    
-  selectedassesment : any = [];
+  selectedassesment : any = [
+    {metricId:11,metricName:'KOOS'},
+    {metricId:12 ,metricName:'HOOS'},
+    {metricId:14,metricName:'PAIN'}
+  ];
 
   @ViewChild('multiSelect') multiSelect;
 
@@ -114,8 +116,7 @@ export class DashboardComponent implements OnInit {
   public setForm() {
     this.dropdownFrom = new FormGroup({
       names : new FormControl(this.reportMasterList, Validators.required),
-    });
-    
+    }); 
   }
 
   
@@ -123,7 +124,10 @@ export class DashboardComponent implements OnInit {
   get form() {
     return this.dropdownFrom.controls;
   }
-  
+  isActivePeriodDropdown = "Year"
+  setPeriodDropdown(active){
+    this.isActivePeriodDropdown = active
+  }
 
   public onItemSelect(item: any) {
     //this.setForm()
@@ -132,7 +136,7 @@ export class DashboardComponent implements OnInit {
     setTimeout(() => {
       this.isActive ="Aggregate";
     }, 0);
-    console.log('*********************', this.dropdownFrom.value);
+    
   }
   public onDeSelect(item: any) {
     // this.selectedassesment.forEach(data => {

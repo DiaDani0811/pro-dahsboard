@@ -10,16 +10,16 @@ export class AggregatechartComponent implements OnInit {
 
   constructor() { }
 
+  @Input() aggregateChartId : string = '';
+  @Input()chartData :any = []
+
   ngOnInit(): void {
-    //console.log('aggregateChartId',this.aggregateChartId);
- 
+    console.log('aggregateChartId',this.chartData);
   }
 
   ngAfterViewInit() {
     this.renderChart();
   }
-
-  @Input() aggregateChartId : string = '';
 
   lables: any = ["Pre Op", "Recovery 3W"];
   dataChart : any = [30 , 70] 
@@ -34,7 +34,6 @@ export class AggregatechartComponent implements OnInit {
           categoryPercentage : 0.5,
           barPercentage : 0.5
 
-          
         }]
       },
       options: {

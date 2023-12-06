@@ -5,7 +5,7 @@ import { BysurgeonRoutingModule } from './bysurgeon-routing.module';
 import { BysurgeonComponent } from './bysurgeon.component';
 import { HoosComponentLong } from './hoos/hoos.component';
 import { CaseVolume } from './CaseVolume/casevolume.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { SurgeonsidebarComponent } from './sidebar/sidebar.component';
 import {Ng2SearchPipeModule} from 'ng2-search-filter'
 import { FormsModule } from '@angular/forms';
 
@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
     BysurgeonComponent,
     HoosComponentLong,
     CaseVolume,
-    SidebarComponent
+    SurgeonsidebarComponent
   ],
   imports: [
     CommonModule,

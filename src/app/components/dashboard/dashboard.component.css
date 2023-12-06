@@ -2,17 +2,26 @@
     height: calc(100% - 100px);
     position: relative;
 }
-.btn-light{
-    border-radius: 0;
+.btn1{
     background-color:white ;
     color: #646464;
-    border: 1px solid;
+    padding: 7px 10px 7px 10px  ;
+    font-size: 14px;
+    border: 1px solid  #646464;
+}
+.btn1:nth-child(2),.btn1:nth-child(3){
+        border-left:none ;
 }
 .active1{
-      border-radius: 0;
+    border-radius: 0;
     background-color: #646464;
     color: white;
-    border: 1px solid;
+    border: 1px solid  #646464;
+}
+::ng-deep .multiselect-dropdown .dropdown-btn{
+    height: 38px;
+    padding: 10px !important;
+    border: 1px solid lightgray !important;
 }
 :host ::ng-deep ng-multiselect-dropdown {
     min-width: 22rem;
@@ -181,21 +190,15 @@ nav.navbar .user-size.dropdown-menu li.welcome img {
     min-width: -webkit-fill-available !important;
 }
 .period-dropdown {
-    display: block;
     width: 100%;
-    padding: 0.25rem 1rem;
-    clear: both;
-    font-weight: 400;
+    height: 40px;
     color: #1F1F1F;
-    text-align: inherit;
     text-decoration: none;
-    white-space: nowrap;
-    background-color: transparent;
-    border: 0;
+    text-align: center;
+    padding: 8px;
 }
 .period-dropdown:hover{
-    color: white;
-    background-color: #4f84c4;
+    border: 1px solid #4f84c4;
 }
 .period-dropdown:active {
     color: white;
@@ -313,4 +316,7 @@ nav.navbar .user-size.dropdown-menu li.welcome img {
 .icon-arrow-up:before {
   content: "\e607";
   
+}
+.modal-container{
+    padding: 30px;
 }

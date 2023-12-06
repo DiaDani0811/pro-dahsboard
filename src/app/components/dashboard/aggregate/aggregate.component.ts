@@ -7,17 +7,14 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./aggregate.component.css']
 })
 export class AggregateComponent implements OnInit {
-
+ 
+  @Input() selectedAssesment : any 
   constructor(private userService:UserService) { }
 
   ngOnInit(): void {
     this.getAggregateDashboardData();
-    //console.log('aggregate page ',this.selectedAssesment);
   }
-  
   aggredgateDashboardData:any=[];
-  @Input() selectedAssesment : any 
-
   getAggregateDashboardData(){
     let payload = {
         "filters": {
@@ -35,20 +32,21 @@ export class AggregateComponent implements OnInit {
          "fromRange": "",
          "toRange": ""
         },
-        "fromRange": "Q2-11",
-        "toRange": "Q3-18",
+        "fromRange": "Q2-18",
+        "toRange": "Q3-22",
         "mako": "'yes','no'",
         "period": "Q",
         "scoreType": "altscore",
         "metricId": 0,
         "metricIdList": [
-         12
+         11,12,13
         ],
         "metricCatId": 4,
         "button": localStorage.getItem('mode')       
     }
     this.userService.getAggregateDashboardData(payload).subscribe(data=>{
       this.aggredgateDashboardData = data
+      console.log('aggredgateDashboardData-------->',this.aggredgateDashboardData);
     })
   }
 
