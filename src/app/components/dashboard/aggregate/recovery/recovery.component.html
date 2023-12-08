@@ -1,10 +1,10 @@
-<button class="button mb-2">Recovery</button>
+<button class="button">Recovery</button>
 
 <div class="card mb-5">
     <div class="row text-center p-2">
         <div class="col-4" style="font-weight: bold;" *ngFor="let data of selectedAssesmentData; let i = index;">
             <label for="hoos">{{data.metricName}}</label>
-            <app-aggregatechart class="col-4" id="hoos" [aggregateChartId]="data.metricName+'rec'" [chartData]="chartData" ></app-aggregatechart>
+            <app-aggregatechart class="col-4" id="hoos" [aggregateChartId]="data.metricName+'rec'"  [metricId]="data.metricId" [periodRangeData]="periodRange" ></app-aggregatechart>
         </div>
     </div>
 </div>

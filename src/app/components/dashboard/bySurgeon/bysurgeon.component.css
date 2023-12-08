@@ -62,7 +62,7 @@ img{
   .fullName{
     font-size: 14px;
     font-weight: 600;
-   
+    margin-top: 30px !important;
   }
   .linechartcard{
     border-radius: 0;

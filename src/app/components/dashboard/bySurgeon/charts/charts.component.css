@@ -1,0 +1,7 @@
+.button{
+    border-radius: 0;
+    background-color: #646464;
+    color: white;
+    border: 1px solid;
+    width: 130px;
+}

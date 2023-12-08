@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="container-fluid" style="margin-top: 7rem!important;">
+<div class="container-fluid px-5" style="margin-top: 7rem!important;">
     <div class="row">
         <div class="col-6">
             <button class="btn1" (click)="setActive('Aggregate')" [ngClass]="isActive == 'Aggregate'?'active1':''">Aggregate</button>
@@ -13,27 +13,24 @@
                            <span class="mt-2 mr-3"> DOS :</span>  <span class="input-group-addon input-group-prepend border-right">
                                <span class="icon-calendar input-group-text calendar-icon"></span>
                             </span>
-                            <input type="text" class="form-control" style="padding-left:5px;padding-right: 5px;" value="{{baseData?.fromRange}} to {{baseData?.toRange}}">
+                            <input type="text" class="form-control" *ngIf="isActivePeriodDropdown == 'Q'" style="padding-left:5px;padding-right: 5px;" value="{{(quarter?.fromRange ? quarter?.fromRange  : periodRange[0].fromRange)}} to {{(quarter?.toRange ? quarter?.toRange : periodRange[0].toRange)}}">
+                            <input type="text" class="form-control" *ngIf="isActivePeriodDropdown == 'M'" style="padding-left:5px;padding-right: 5px;" value="{{(month?.fromRange)}} to {{month?.toRange}}">
+                            <input type="text" class="form-control" *ngIf="isActivePeriodDropdown == 'Y'" style="padding-left:5px;padding-right: 5px;" value="{{(year?.fromRange)}} to {{year?.toRange}}">
                          </div>
                 </div>
                 <div class="col-6">
-                    <form [formGroup]="dropdownFrom">
-                        <!-- (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)" -->
-                    <ng-multiselect-dropdown #multiSelect  [placeholder]="'Select Assesment'" [data]="reportMasterList" [settings]="settings"
-                        (onSelect)="onItemSelect($event)" (onDeSelect)="onDeSelect($event)"  formControlName="names"
-                          (onFilterChange)="onFilterChange($event)"
-                        (onDropDownClose)="onDropDownClose($event)">
+                    <ng-multiselect-dropdown  [settings]="dropdownSettings" [data]="reportMasterList"
+                    [(ngModel)]="selectedassesment" [ngModelOptions]="{standalone: true}" (ngModelChange)=onItemSelect($event)  >
                     </ng-multiselect-dropdown>
-                    </form>
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <app-aggregate *ngIf="isActive == 'Aggregate'" [selectedAssesment]="selectedassesment"></app-aggregate>
-            <app-bysurgeon *ngIf="isActive == 'Surgeon'"></app-bysurgeon>
-            <app-bypatient *ngIf="isActive == 'Patient'"></app-bypatient> 
+            <app-aggregate *ngIf="isActive == 'Aggregate'" [selectedAssesment]="selectedassesment" [periodRange] = "periodRange"></app-aggregate>
+            <app-bysurgeon *ngIf="isActive == 'Surgeon'" [selectedAssesment]="selectedassesment"></app-bysurgeon>
+            <app-bypatient *ngIf="isActive == 'Patient'" [selectedAssesment]="selectedassesment"></app-bypatient> 
         </div>
     </div>
    
@@ -42,30 +39,53 @@
 
 <ng-template #rangeSlider>
     <div class="modal-container">
-    <div class="modal-body" >
+   
        <div class="row">
-          <div class="col-lg-3 d-flex flex-column" >
+          <div class="col-lg-3 d-flex flex-column leftRange" >
              <div class="row">
-                <a class="period-dropdown"  href="javascript:void(0);"  (click)="setPeriodDropdown('Year')" [ngClass]="isActivePeriodDropdown == 'Year'?'active':''" > Year </a>
-                <a class="period-dropdown "  href="javascript:void(0);"  (click)="setPeriodDropdown('Month')" [ngClass]="isActivePeriodDropdown == 'Month'?'active':''" > Month </a>
-                <a class="period-dropdown "  href="javascript:void(0);"  (click)="setPeriodDropdown('Quarter')" [ngClass]="isActivePeriodDropdown == 'Quarter'?'active':''" > Quarter </a>            
+                <a class="period-dropdown"  href="javascript:void(0);"  (click)="setPeriodDropdown('Q')" [ngClass]="isActivePeriodDropdown == 'Q'?'active':''" > Quarter </a>            
+                <a class="period-dropdown"  href="javascript:void(0);"  (click)="setPeriodDropdown('M')" [ngClass]="isActivePeriodDropdown == 'M'?'active':''" > Month </a>
+                <a class="period-dropdown"  href="javascript:void(0);"  (click)="setPeriodDropdown('Y')" [ngClass]="isActivePeriodDropdown == 'Y'?'active':''" > Year </a>              
              </div>
           </div>
-          <div class="col-lg-9 d-flex flex-column p-5" >
+          <div class="col-lg-9 d-flex flex-column p-4"  >
             <div class="row flex-grow" style="overflow: hidden;" >
-             <h4 >Date of Surgery</h4>
-             <ngx-slider [value]="fromRange" [highValue]="toRange" [options]="options" 
-             (valueChange)="fromValueChange($event)" (highValueChange)="toValueChange($event)"></ngx-slider>
+            <div class="w-100" *ngIf="isActivePeriodDropdown == 'Q'">   
+                <ngx-slider [value]="fromRangeQuarter" [highValue]="toRangeQuarter" [options]="optionsForQuarter" 
+                (valueChange)="fromValueChangeInQuarter($event)" (highValueChange)="toValueChangeInQuarter($event)" ></ngx-slider>
+                <span >
+                    <span class="low">{{Qlabel[0]}}</span>
+                    <span class="high">{{Qlabel[Qlabel.length -1]}}</span>
+                </span>
+            </div>
+             <div class="w-100"  *ngIf="isActivePeriodDropdown == 'Y'">
+                <ngx-slider [value]="fromRangeYear" [highValue]="toRangeYear" [options]="optionsForYear" 
+                (valueChange)="fromValueChangeInYear($event)" (highValueChange)="toValueChangeInYear($event)"></ngx-slider>
+                <span >
+                    <span class="low">{{Ylabel[0]}}</span>
+                    <span class="high">{{Ylabel[Ylabel.length -1]}}</span>
+                </span>
              </div>
+           <div class="w-100" *ngIf="isActivePeriodDropdown == 'M'">
+            <ngx-slider [value]="fromRangeMonth" [highValue]="toRangeMonth" [options]="optionsForMonth" 
+            (valueChange)="fromValueChangeInMonth($event)" (highValueChange)="toValueChangeInMonth($event)" ></ngx-slider>           
+            <span >
+                <span class="low">{{Mlabel[0]}}</span>
+                    <span class="high">{{Mlabel[Mlabel.length -1]}}</span>
+            </span>
+            </div>
+           </div>
+            
           </div>
        </div>
-    </div>
+
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-sm" (click)="rangeModal.hide();">Close</button>
         <button type="button" class="btn btn-primary btn-sm" (click)="savePeriodRange()">Apply</button>
     </div>
 </div>
  </ng-template>
+ 
 <app-footer></app-footer>
 <a href="javascript:void(0);" (click)="scrolltoBottom()" class=" back-to-top doNotPrint" id="back-to-top" style="display: inline;background-color: #fd9903;"><i class="icon-arrow-down" style="color: black;"></i></a>
 <a href="javascript:void(0);" (click)="scrolltoTop()" class="back-to-bottom doNotPrint" id="back-to-bottom" style="display: none;background-color: #fd9903;"><i class="icon-arrow-up" style="color: black;"></i></a>

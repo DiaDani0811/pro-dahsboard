@@ -1,10 +1,10 @@
-<button class="button mt-3 mb-2">Long Term Follow-Up</button>
+<button class="button ">Long Term Follow-Up</button>
 
 <div class="card mb-5">
     <div class="row text-center p-2">
         <div class="col-4" style="font-weight: bold;" *ngFor="let data of selectedAssesmentData; let i = index;">
             <label for="hoos">{{data.metricName}}</label>
-            <app-aggregatechart class="col-4" id="hoos" [aggregateChartId]="data.metricName+'lt'" [chartData]="chartData" ></app-aggregatechart>
+            <app-aggregatechart class="col-4" id="hoos" [aggregateChartId]="data.metricName+'lt'" [metricId]="data.metricId" [periodRangeData]="periodRange" ></app-aggregatechart>
         </div>
     </div>
 </div>

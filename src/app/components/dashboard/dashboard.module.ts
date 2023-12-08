@@ -17,6 +17,7 @@ import { AggregatechartComponent } from './aggregate/aggregatechart/aggregatecha
 import { BysurgeonComponent } from './bySurgeon/bysurgeon.component';
 import { BypatientComponent } from './byPatient/bypatient.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ChartsComponent } from './bySurgeon/charts/charts.component';
 @NgModule({
   declarations: [DashboardComponent,
     HeaderComponent,
@@ -27,6 +28,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AggregateComponent,
     RecoveryComponent,
     LongtermComponent,
+    ChartsComponent
     ],
   imports: [
     CommonModule,
@@ -36,6 +38,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ModalModule.forRoot(),
     DxSelectBoxModule,
     NgxSliderModule,
+    FormsModule,
     Ng2SearchPipeModule
  
   ],

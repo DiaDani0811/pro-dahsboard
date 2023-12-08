@@ -1,8 +1,8 @@
 <div>
     <div class="row mt-3">
-        <div class="col-12">
-            <app-recovery [selectedAssesmentData]="selectedAssesment" [chartData]="aggredgateDashboardData"></app-recovery> 
-            <app-longterm [selectedAssesmentData]="selectedAssesment" [chartData]="aggredgateDashboardData"></app-longterm>
+        <div class="col-12 ml-2">
+            <app-recovery [selectedAssesmentData]="selectedAssesment" [periodRange]="periodRange" ></app-recovery> 
+            <app-longterm [selectedAssesmentData]="selectedAssesment" [periodRange]="periodRange" ></app-longterm>
         </div>
     </div>
 </div>

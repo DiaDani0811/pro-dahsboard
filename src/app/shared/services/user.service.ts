@@ -92,6 +92,10 @@ export class UserService {
   {
     return this.apiService.post('/api/v1/reports/getAllPatients',payload)
   }
+  getSurgeonDashboardData(payload)
+  {
+    return this.apiService.post('/api/v1/reports/getSurgeonDashboardData',payload)
+  }
   // getAllStaffs(obj) {
   //   return this.apiService.post(`/api/v1/reports/getAllStaffs`, obj);
   // }
@@ -107,9 +111,9 @@ export class UserService {
   // getReportCategoriesList(obj) {
   //   return this.apiService.post('/api/v1/reports/getReportCategories',obj);
   // }
-  // getpriodsList(data) {
-  //   return this.apiService.post('/api/v1/reports/getPeriodRanges', data);
-  // }
+  getperiodsList(data) {
+    return this.apiService.post('/api/v1/reports/getPeriodRanges', data);
+  }
   // getDashboardList(baseData) {
   //   return this.apiService.post('/api/v1/reports/getDashboardData', baseData);
   // }

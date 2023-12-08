@@ -9,9 +9,7 @@ export class LongtermComponent implements OnInit {
   @Input() chartData : any
   constructor() { }
   @Input() selectedAssesmentData : any
+  @Input() periodRange :any
   ngOnInit(): void {
-    console.log('long',this.selectedAssesmentData,this.chartData);
   }
-
-
 }

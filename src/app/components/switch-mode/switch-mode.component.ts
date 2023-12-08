@@ -28,7 +28,6 @@ export class SwitchModeComponent implements OnInit {
   hospitalId:any;
   hspchangeevent(e:any){
     this.hospitalId =  e.value 
-    console.log('this.hospitalId.length>0',this.hospitalId);
     if(this.hospitalId){
       this.disableButton = false
     }

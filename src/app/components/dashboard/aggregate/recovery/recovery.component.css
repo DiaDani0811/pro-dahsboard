@@ -3,6 +3,9 @@
     background-color: #646464;
     color: white;
     border: 1px solid;
+    padding: 3px 7px 3px 7px;
+    margin-bottom: 10px;
+    font-size: 14px;
 }
 .card{
     background: rgba( 255, 255, 255, 1 );

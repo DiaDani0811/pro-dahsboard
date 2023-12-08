@@ -113,7 +113,7 @@ nav.navbar .dropdown-menu {
 }
 .period-dropdown.active{
     color: white;
-    background-color: #4f84c4;
+    background-color: #646464;
 }
 ::ng-deep .results pre {
     max-height: 200px !important;
@@ -198,7 +198,7 @@ nav.navbar .user-size.dropdown-menu li.welcome img {
     padding: 8px;
 }
 .period-dropdown:hover{
-    border: 1px solid #4f84c4;
+    border: 1px solid #f1f1f1;
 }
 .period-dropdown:active {
     color: white;
@@ -319,4 +319,23 @@ nav.navbar .user-size.dropdown-menu li.welcome img {
 }
 .modal-container{
     padding: 30px;
+}
+.low{
+    float: left;
+}
+.high{
+    float: right;
+}
+.low,.high{
+    color: #333;
+    font-size: 12px;
+    line-height: 1.333;
+    text-shadow: none;
+    top: 0;
+    padding: 1px 5px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 3px;
+}
+.leftRange{
+   border-right: 1px solid  #f1f1f1 ;
 }

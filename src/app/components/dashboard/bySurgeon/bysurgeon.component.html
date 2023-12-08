@@ -1,7 +1,7 @@
-<div class="container-fluid mt-3 p-0">
+<div class="container-fluid mt-3 p-0 mb-5">
     <div class="row">
         <div class="col-4">
-            <div class="card " style=" height: 430px;">
+            <div class="card">
                 <div class="card-header CH">
                     <div>
                         <div class="input-group-prepend">
@@ -11,14 +11,14 @@
                 </div>
                 <div class="card-body CH">
                   <div class="mt-3">
-                    <div class="card" style="height: 300px;overflow-y: auto;" *ngIf="surgeonList.length >0">
+                    <div class="card" style="height: 300px;overflow-y: scroll;background-color: rgb(131, 140, 139);" *ngIf="surgeonList.length >0">
                       <ng-container *ngFor="let data of surgeonList | filter:searchText; let i = index">
-                        <div [ngClass]="activeIndex==i ? 'rowCss':''" style="margin: 6px 8px 11px 6px;cursor: pointer;" class="row mb-1" (click)="activeIndex=i">
+                        <div [ngClass]="activeIndex==i ? 'rowCss':''" style="margin: 6px 8px 11px 6px;cursor: pointer;" class="row mb-1" (click)="activeIndex=i;selectedSurgeonId(data)">
                           <div class="col-3">
                             <img [src]="imgsrc" height="50" width="50" class="mt-3" style="border: 3px solid rgb(131, 140, 139);" alt="">
                           </div>
                           <div class="col-9">
-                            <p class="mt-4 fullName">{{data.fullName}}
+                            <p class="fullName">{{data.fullName}}
                               <span ><i class="fa-solid fa-circle-chevron-right float-right mr-2 mt-1" style="color: rgba(247, 150, 4, 0.863); font-size: larger;"></i></span>
                             </p>
                           </div>
@@ -27,7 +27,7 @@
                     </div>
                   </div>
                 </div>
-              </div>              
+          </div>              
         </div>
         <div class="col-8">
                 <div class="card mb-4">
@@ -37,12 +37,12 @@
                                 <img src="../../../../assets/images/profile.jpg" height="75" width="75">
                             </div>
                             <div class="col-5 p-3">
-                                <span style="font-weight: bold; font-size: x-large; color: grey;">Mr. Robert Peterson</span> <br>
+                                <span style="font-weight: bold; font-size: x-large; color: grey;">{{surgeonData.fullName}}</span> <br>
                                 <span style="font-weight: bold;font-size: large; color: #f8a62b;">OrthoPedic Surgeon</span>
                             </div>
                             <div class="col-5 p-3">
                                 <div class="row mb-2" >
-                                    <span  style="font-weight: bolder;color: #f8a62b;font-size: larger;">NPI : 4525652425 </span>
+                                    <span  style="font-weight: bolder;color: #f8a62b;font-size: larger;">NPI :{{surgeonData.surgeonNpi}} </span>
                                 </div>
                                 <div class="row mb-2" >
                                     <!-- <span class="col-6" style="font-weight: bolder;">DOS  </span> -->
@@ -51,18 +51,9 @@
                             </div>
                         </div>
                     </div>
-                <div class="m-3">
-                <button class="button mt-3 mb-2 ms-3">Case Volume </button>
-                <div class="card linechartcard" style="width: 100%;">
-                  <canvas id="casevolume" height="25" width="100"></canvas>
-                 </div>
-                  <button class="button mt-3 mb-2 ms-3">Hoos</button> 
-                 <div class="card linechartcard" style="width: 100%">
-                   <canvas id="hoosSurgen" height="25" width="100"></canvas>
-                 </div>
-                </div> 
+                    
                 </div>
-           
+                <app-charts [selectedAssesment]="selectedAssesment" [surgeonData]="surgeonData"></app-charts>
         </div>
     </div>
 </div>

@@ -3,18 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { BysurgeonRoutingModule } from './bysurgeon-routing.module';
 import { BysurgeonComponent } from './bysurgeon.component';
-import { HoosComponentLong } from './hoos/hoos.component';
-import { CaseVolume } from './CaseVolume/casevolume.component';
 import { SurgeonsidebarComponent } from './sidebar/sidebar.component';
 import {Ng2SearchPipeModule} from 'ng2-search-filter'
 import { FormsModule } from '@angular/forms';
+import { ChartsComponent } from './charts/charts.component';
 
 @NgModule({
   declarations: [
     BysurgeonComponent,
-    HoosComponentLong,
-    CaseVolume,
-    SurgeonsidebarComponent
+    SurgeonsidebarComponent,
+    ChartsComponent
   ],
   imports: [
     CommonModule,
